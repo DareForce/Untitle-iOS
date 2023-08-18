@@ -12,6 +12,7 @@
 		09171ABD2A8F5B4C0097A9A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09171ABC2A8F5B4C0097A9A5 /* ViewController.swift */; };
 		09171AC22A8F5B4E0097A9A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09171AC12A8F5B4E0097A9A5 /* Assets.xcassets */; };
 		09171AC52A8F5B4E0097A9A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09171AC32A8F5B4E0097A9A5 /* LaunchScreen.storyboard */; };
+		9A7A54137625587D2E798F2A /* Pods_JunctionAsia2023.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E745AEC367791908A39015FB /* Pods_JunctionAsia2023.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		09171AC12A8F5B4E0097A9A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09171AC42A8F5B4E0097A9A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09171AC62A8F5B4E0097A9A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B09F0A3D3AEB6E8FA9C00233 /* Pods-JunctionAsia2023.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JunctionAsia2023.release.xcconfig"; path = "Target Support Files/Pods-JunctionAsia2023/Pods-JunctionAsia2023.release.xcconfig"; sourceTree = "<group>"; };
+		CD8EDBAD5A2BE65CD04EC36F /* Pods-JunctionAsia2023.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JunctionAsia2023.debug.xcconfig"; path = "Target Support Files/Pods-JunctionAsia2023/Pods-JunctionAsia2023.debug.xcconfig"; sourceTree = "<group>"; };
+		E745AEC367791908A39015FB /* Pods_JunctionAsia2023.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JunctionAsia2023.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A7A54137625587D2E798F2A /* Pods_JunctionAsia2023.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				09171AB72A8F5B4C0097A9A5 /* JunctionAsia2023 */,
 				09171AB62A8F5B4C0097A9A5 /* Products */,
+				3D6B7FBF363C20CFB9664808 /* Pods */,
+				C8C5B1BD1BBE8FA69D93DC11 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,24 @@
 			path = JunctionAsia2023;
 			sourceTree = "<group>";
 		};
+		3D6B7FBF363C20CFB9664808 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CD8EDBAD5A2BE65CD04EC36F /* Pods-JunctionAsia2023.debug.xcconfig */,
+				B09F0A3D3AEB6E8FA9C00233 /* Pods-JunctionAsia2023.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C8C5B1BD1BBE8FA69D93DC11 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E745AEC367791908A39015FB /* Pods_JunctionAsia2023.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +96,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 09171AC92A8F5B4E0097A9A5 /* Build configuration list for PBXNativeTarget "JunctionAsia2023" */;
 			buildPhases = (
+				FF1D2195AD1B1AB0023DA867 /* [CP] Check Pods Manifest.lock */,
 				09171AB12A8F5B4C0097A9A5 /* Sources */,
 				09171AB22A8F5B4C0097A9A5 /* Frameworks */,
 				09171AB32A8F5B4C0097A9A5 /* Resources */,
+				92ADB5BF899309E5DC830AD3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -128,6 +155,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		92ADB5BF899309E5DC830AD3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JunctionAsia2023/Pods-JunctionAsia2023-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JunctionAsia2023/Pods-JunctionAsia2023-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JunctionAsia2023/Pods-JunctionAsia2023-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF1D2195AD1B1AB0023DA867 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JunctionAsia2023-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		09171AB12A8F5B4C0097A9A5 /* Sources */ = {
@@ -270,6 +339,7 @@
 		};
 		09171ACA2A8F5B4E0097A9A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD8EDBAD5A2BE65CD04EC36F /* Pods-JunctionAsia2023.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -297,6 +367,7 @@
 		};
 		09171ACB2A8F5B4E0097A9A5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B09F0A3D3AEB6E8FA9C00233 /* Pods-JunctionAsia2023.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
