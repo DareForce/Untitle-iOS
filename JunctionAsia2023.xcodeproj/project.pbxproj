@@ -12,6 +12,11 @@
 		09171ABD2A8F5B4C0097A9A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09171ABC2A8F5B4C0097A9A5 /* ViewController.swift */; };
 		09171AC22A8F5B4E0097A9A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09171AC12A8F5B4E0097A9A5 /* Assets.xcassets */; };
 		09171AC52A8F5B4E0097A9A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09171AC32A8F5B4E0097A9A5 /* LaunchScreen.storyboard */; };
+		983074D52A8F635F00A060CD /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074D42A8F635F00A060CD /* BaseViewController.swift */; };
+		983074DF2A8F642B00A060CD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074DE2A8F642B00A060CD /* NetworkManager.swift */; };
+		983074E32A8F644C00A060CD /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074E22A8F644C00A060CD /* View.swift */; };
+		983074E52A8F645C00A060CD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074E42A8F645C00A060CD /* Model.swift */; };
+		983074E72A8F657700A060CD /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074E62A8F657700A060CD /* ViewController+Extension.swift */; };
 		9A7A54137625587D2E798F2A /* Pods_JunctionAsia2023.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E745AEC367791908A39015FB /* Pods_JunctionAsia2023.framework */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +28,11 @@
 		09171AC12A8F5B4E0097A9A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09171AC42A8F5B4E0097A9A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09171AC62A8F5B4E0097A9A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		983074D42A8F635F00A060CD /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		983074DE2A8F642B00A060CD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		983074E22A8F644C00A060CD /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		983074E42A8F645C00A060CD /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		983074E62A8F657700A060CD /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
 		B09F0A3D3AEB6E8FA9C00233 /* Pods-JunctionAsia2023.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JunctionAsia2023.release.xcconfig"; path = "Target Support Files/Pods-JunctionAsia2023/Pods-JunctionAsia2023.release.xcconfig"; sourceTree = "<group>"; };
 		CD8EDBAD5A2BE65CD04EC36F /* Pods-JunctionAsia2023.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JunctionAsia2023.debug.xcconfig"; path = "Target Support Files/Pods-JunctionAsia2023/Pods-JunctionAsia2023.debug.xcconfig"; sourceTree = "<group>"; };
 		E745AEC367791908A39015FB /* Pods_JunctionAsia2023.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JunctionAsia2023.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,7 +73,12 @@
 			children = (
 				09171AB82A8F5B4C0097A9A5 /* AppDelegate.swift */,
 				09171ABA2A8F5B4C0097A9A5 /* SceneDelegate.swift */,
-				09171ABC2A8F5B4C0097A9A5 /* ViewController.swift */,
+				983074DD2A8F642000A060CD /* Extensions */,
+				983074D92A8F63CD00A060CD /* Services */,
+				983074D82A8F63C800A060CD /* Views */,
+				983074D72A8F63C200A060CD /* Controllers */,
+				983074D62A8F63BB00A060CD /* Models */,
+				983074DA2A8F63EA00A060CD /* Helpers */,
 				09171AC12A8F5B4E0097A9A5 /* Assets.xcassets */,
 				09171AC32A8F5B4E0097A9A5 /* LaunchScreen.storyboard */,
 				09171AC62A8F5B4E0097A9A5 /* Info.plist */,
@@ -77,8 +92,55 @@
 				CD8EDBAD5A2BE65CD04EC36F /* Pods-JunctionAsia2023.debug.xcconfig */,
 				B09F0A3D3AEB6E8FA9C00233 /* Pods-JunctionAsia2023.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		983074D62A8F63BB00A060CD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				983074E42A8F645C00A060CD /* Model.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		983074D72A8F63C200A060CD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				09171ABC2A8F5B4C0097A9A5 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		983074D82A8F63C800A060CD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				983074E22A8F644C00A060CD /* View.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		983074D92A8F63CD00A060CD /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				983074DE2A8F642B00A060CD /* NetworkManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		983074DA2A8F63EA00A060CD /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				983074D42A8F635F00A060CD /* BaseViewController.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		983074DD2A8F642000A060CD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				983074E62A8F657700A060CD /* ViewController+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		C8C5B1BD1BBE8FA69D93DC11 /* Frameworks */ = {
@@ -203,7 +265,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				983074E72A8F657700A060CD /* ViewController+Extension.swift in Sources */,
+				983074E52A8F645C00A060CD /* Model.swift in Sources */,
 				09171ABD2A8F5B4C0097A9A5 /* ViewController.swift in Sources */,
+				983074D52A8F635F00A060CD /* BaseViewController.swift in Sources */,
+				983074DF2A8F642B00A060CD /* NetworkManager.swift in Sources */,
+				983074E32A8F644C00A060CD /* View.swift in Sources */,
 				09171AB92A8F5B4C0097A9A5 /* AppDelegate.swift in Sources */,
 				09171ABB2A8F5B4C0097A9A5 /* SceneDelegate.swift in Sources */,
 			);
@@ -345,7 +412,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JA7UDVTQBU;
+				DEVELOPMENT_TEAM = N6LML762WM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JunctionAsia2023/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -373,7 +440,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JA7UDVTQBU;
+				DEVELOPMENT_TEAM = N6LML762WM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JunctionAsia2023/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
