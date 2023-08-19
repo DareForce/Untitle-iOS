@@ -22,6 +22,9 @@
 		983074E32A8F644C00A060CD /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074E22A8F644C00A060CD /* View.swift */; };
 		983074E52A8F645C00A060CD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074E42A8F645C00A060CD /* Model.swift */; };
 		983074E72A8F657700A060CD /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074E62A8F657700A060CD /* ViewController+Extension.swift */; };
+		983074ED2A90517500A060CD /* UserDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074EC2A90517500A060CD /* UserDataViewController.swift */; };
+		983074F32A905CF000A060CD /* UserDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074F22A905CF000A060CD /* UserDataCell.swift */; };
+		983074F52A906C0100A060CD /* UserDataCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074F42A906C0100A060CD /* UserDataCollectionViewLayout.swift */; };
 		9A7A54137625587D2E798F2A /* Pods_JunctionAsia2023.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E745AEC367791908A39015FB /* Pods_JunctionAsia2023.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +46,9 @@
 		983074E22A8F644C00A060CD /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		983074E42A8F645C00A060CD /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		983074E62A8F657700A060CD /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
+		983074EC2A90517500A060CD /* UserDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataViewController.swift; sourceTree = "<group>"; };
+		983074F22A905CF000A060CD /* UserDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataCell.swift; sourceTree = "<group>"; };
+		983074F42A906C0100A060CD /* UserDataCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataCollectionViewLayout.swift; sourceTree = "<group>"; };
 		B09F0A3D3AEB6E8FA9C00233 /* Pods-JunctionAsia2023.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JunctionAsia2023.release.xcconfig"; path = "Target Support Files/Pods-JunctionAsia2023/Pods-JunctionAsia2023.release.xcconfig"; sourceTree = "<group>"; };
 		CD8EDBAD5A2BE65CD04EC36F /* Pods-JunctionAsia2023.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JunctionAsia2023.debug.xcconfig"; path = "Target Support Files/Pods-JunctionAsia2023/Pods-JunctionAsia2023.debug.xcconfig"; sourceTree = "<group>"; };
 		E745AEC367791908A39015FB /* Pods_JunctionAsia2023.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JunctionAsia2023.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +126,7 @@
 				09171ABC2A8F5B4C0097A9A5 /* ViewController.swift */,
 				09171ACC2A9058800097A9A5 /* WelcomeViewController.swift */,
 				09171AD42A907EE20097A9A5 /* MainViewController.swift */,
+				983074EC2A90517500A060CD /* UserDataViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -130,6 +137,7 @@
 				983074E22A8F644C00A060CD /* View.swift */,
 				09171ACE2A9058B50097A9A5 /* WelecomeView.swift */,
 				09171AD22A907E7A0097A9A5 /* MainView.swift */,
+				983074F22A905CF000A060CD /* UserDataCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -146,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				983074D42A8F635F00A060CD /* BaseViewController.swift */,
+				983074F42A906C0100A060CD /* UserDataCollectionViewLayout.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -178,6 +187,7 @@
 				09171AB22A8F5B4C0097A9A5 /* Frameworks */,
 				09171AB32A8F5B4C0097A9A5 /* Resources */,
 				92ADB5BF899309E5DC830AD3 /* [CP] Embed Pods Frameworks */,
+				983074F62A90739B00A060CD /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -251,6 +261,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JunctionAsia2023/Pods-JunctionAsia2023-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		983074F62A90739B00A060CD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\nERRORTAG=\"ERROR:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\" | perl -p -e \"s/($ERRORTAG)/ error: \\$1/\"\n";
+		};
 		FF1D2195AD1B1AB0023DA867 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -286,11 +313,14 @@
 				983074E72A8F657700A060CD /* ViewController+Extension.swift in Sources */,
 				983074E52A8F645C00A060CD /* Model.swift in Sources */,
 				09171ABD2A8F5B4C0097A9A5 /* ViewController.swift in Sources */,
+				983074ED2A90517500A060CD /* UserDataViewController.swift in Sources */,
 				983074D52A8F635F00A060CD /* BaseViewController.swift in Sources */,
 				09171ACF2A9058B50097A9A5 /* WelecomeView.swift in Sources */,
 				983074DF2A8F642B00A060CD /* NetworkManager.swift in Sources */,
+				983074F52A906C0100A060CD /* UserDataCollectionViewLayout.swift in Sources */,
 				983074E32A8F644C00A060CD /* View.swift in Sources */,
 				09171AB92A8F5B4C0097A9A5 /* AppDelegate.swift in Sources */,
+				983074F32A905CF000A060CD /* UserDataCell.swift in Sources */,
 				09171ABB2A8F5B4C0097A9A5 /* SceneDelegate.swift in Sources */,
 				09171AD12A9073950097A9A5 /* UserModel.swift in Sources */,
 			);
