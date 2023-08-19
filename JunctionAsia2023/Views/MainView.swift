@@ -9,6 +9,7 @@ import UIKit
 
 class MainView: UIView {
     var purple = false
+    
     let AdditionalCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.register(AllergiesCollectionViewCell.self, forCellWithReuseIdentifier: AllergiesCollectionViewCell.identifier)
         let layout = UICollectionViewFlowLayout()

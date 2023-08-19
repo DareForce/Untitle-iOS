@@ -10,9 +10,7 @@ import UIKit
 class TabBarController: UITabBarController,UITabBarControllerDelegate {
 
     let mainVC = MainViewController()
-//    var allergyDatum: [String]?
-//    var disLikeDatum: [String]?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -26,12 +24,12 @@ class TabBarController: UITabBarController,UITabBarControllerDelegate {
         vc2.tabBarItem.image = UIImage(systemName: "lanyardcard.fill")
         vc2.tabBarItem.selectedImage = UIImage(systemName: "lanyardcard.fill")
         vc2.title = "Food ID"
+        
         let vc3 = UINavigationController(rootViewController: HistoryViewController())
         vc3.tabBarItem.selectedImage = UIImage(systemName: "clock.fill")
         vc3.tabBarItem.image = UIImage(systemName: "clock")
         vc3.title = "My Data"
         
-   
         vc1.navigationItem.largeTitleDisplayMode = .always
         vc2.navigationItem.largeTitleDisplayMode = .always
         vc3.navigationItem.largeTitleDisplayMode = .always

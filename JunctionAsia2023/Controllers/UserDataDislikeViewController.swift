@@ -122,7 +122,7 @@ class UserDataDislikeViewController: BaseViewController {
         let tabBarController = TabBarController()
         tabBarController.selectedIndex = 1
         tabBarController.mainVC.allergyDatum = allergyDatum ?? []
-        tabBarController.mainVC.disLikeDatum = disLikeDatum ?? []
+        tabBarController.mainVC.disLikeDatum = UserDataDislikeViewController.disLikeType
         tabBarController.mainVC.userName = userName ?? "홍길동"
         navigationController?.navigationBar.isHidden = true
         navigationController?.pushViewController(tabBarController, animated: true)
@@ -156,7 +156,6 @@ extension UserDataDislikeViewController: UICollectionViewDelegateFlowLayout, UIC
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let labelText = UserDataDislikeViewController.disLikeType[indexPath.row].string
-        disLikeDatum.append(labelText)
 
         return DisLikeResultCell.fittingSize(availableHeight: 45, labelText)
     }
