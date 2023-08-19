@@ -17,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let viewController = TabBarController()
         viewController.selectedIndex = 1
+
         let navigation = UINavigationController(rootViewController: viewController)
         navigation.navigationBar.isHidden = true
         window.rootViewController = navigation
