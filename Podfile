@@ -9,6 +9,8 @@ target 'JunctionAsia2023' do
   pod 'Then'
   pod 'lottie-ios'
   pod 'SkeletonView'
+  pod 'Kingfisher', '~> 7.0'
+
   # Pods for JunctionAsia2023
 
 end

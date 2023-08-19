@@ -17,6 +17,14 @@
 		09171AD12A9073950097A9A5 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09171AD02A9073950097A9A5 /* UserModel.swift */; };
 		09171AD32A907E7A0097A9A5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09171AD22A907E7A0097A9A5 /* MainView.swift */; };
 		09171AD52A907EE20097A9A5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09171AD42A907EE20097A9A5 /* MainViewController.swift */; };
+		09171AD72A9088910097A9A5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09171AD62A9088910097A9A5 /* TabBarController.swift */; };
+		09171ADB2A9088F00097A9A5 /* RestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09171ADA2A9088F00097A9A5 /* RestaurantViewController.swift */; };
+		09171ADD2A9089080097A9A5 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09171ADC2A9089080097A9A5 /* HistoryViewController.swift */; };
+		09171AE12A90BC530097A9A5 /* AllergiesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09171AE02A90BC530097A9A5 /* AllergiesCollectionViewCell.swift */; };
+		0968149B2A90D8EF003D34B2 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0968149A2A90D8EF003D34B2 /* TableViewCell.swift */; };
+		0968149D2A90E5A2003D34B2 /* DetailResViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0968149C2A90E5A2003D34B2 /* DetailResViewController.swift */; };
+		0968149F2A9117D7003D34B2 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0968149E2A9117D7003D34B2 /* LoginService.swift */; };
+		096814A12A911CFA003D34B2 /* ResService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096814A02A911CFA003D34B2 /* ResService.swift */; };
 		983074D52A8F635F00A060CD /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074D42A8F635F00A060CD /* BaseViewController.swift */; };
 		983074DF2A8F642B00A060CD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074DE2A8F642B00A060CD /* NetworkManager.swift */; };
 		983074E32A8F644C00A060CD /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074E22A8F644C00A060CD /* View.swift */; };
@@ -41,6 +49,14 @@
 		09171AD02A9073950097A9A5 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		09171AD22A907E7A0097A9A5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		09171AD42A907EE20097A9A5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		09171AD62A9088910097A9A5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		09171ADA2A9088F00097A9A5 /* RestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewController.swift; sourceTree = "<group>"; };
+		09171ADC2A9089080097A9A5 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		09171AE02A90BC530097A9A5 /* AllergiesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergiesCollectionViewCell.swift; sourceTree = "<group>"; };
+		0968149A2A90D8EF003D34B2 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		0968149C2A90E5A2003D34B2 /* DetailResViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailResViewController.swift; sourceTree = "<group>"; };
+		0968149E2A9117D7003D34B2 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		096814A02A911CFA003D34B2 /* ResService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResService.swift; sourceTree = "<group>"; };
 		983074D42A8F635F00A060CD /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		983074DE2A8F642B00A060CD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		983074E22A8F644C00A060CD /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -126,6 +142,10 @@
 				09171ABC2A8F5B4C0097A9A5 /* ViewController.swift */,
 				09171ACC2A9058800097A9A5 /* WelcomeViewController.swift */,
 				09171AD42A907EE20097A9A5 /* MainViewController.swift */,
+				09171AD62A9088910097A9A5 /* TabBarController.swift */,
+				09171ADA2A9088F00097A9A5 /* RestaurantViewController.swift */,
+				09171ADC2A9089080097A9A5 /* HistoryViewController.swift */,
+				0968149C2A90E5A2003D34B2 /* DetailResViewController.swift */,
 				983074EC2A90517500A060CD /* UserDataViewController.swift */,
 			);
 			path = Controllers;
@@ -137,6 +157,8 @@
 				983074E22A8F644C00A060CD /* View.swift */,
 				09171ACE2A9058B50097A9A5 /* WelecomeView.swift */,
 				09171AD22A907E7A0097A9A5 /* MainView.swift */,
+				09171AE02A90BC530097A9A5 /* AllergiesCollectionViewCell.swift */,
+				0968149A2A90D8EF003D34B2 /* TableViewCell.swift */,
 				983074F22A905CF000A060CD /* UserDataCell.swift */,
 			);
 			path = Views;
@@ -146,6 +168,8 @@
 			isa = PBXGroup;
 			children = (
 				983074DE2A8F642B00A060CD /* NetworkManager.swift */,
+				0968149E2A9117D7003D34B2 /* LoginService.swift */,
+				096814A02A911CFA003D34B2 /* ResService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -308,11 +332,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				09171ACD2A9058800097A9A5 /* WelcomeViewController.swift in Sources */,
+				096814A12A911CFA003D34B2 /* ResService.swift in Sources */,
+				09171ADB2A9088F00097A9A5 /* RestaurantViewController.swift in Sources */,
 				09171AD52A907EE20097A9A5 /* MainViewController.swift in Sources */,
+				0968149B2A90D8EF003D34B2 /* TableViewCell.swift in Sources */,
 				09171AD32A907E7A0097A9A5 /* MainView.swift in Sources */,
 				983074E72A8F657700A060CD /* ViewController+Extension.swift in Sources */,
 				983074E52A8F645C00A060CD /* Model.swift in Sources */,
+				0968149F2A9117D7003D34B2 /* LoginService.swift in Sources */,
+				09171AE12A90BC530097A9A5 /* AllergiesCollectionViewCell.swift in Sources */,
 				09171ABD2A8F5B4C0097A9A5 /* ViewController.swift in Sources */,
+				09171ADD2A9089080097A9A5 /* HistoryViewController.swift in Sources */,
 				983074ED2A90517500A060CD /* UserDataViewController.swift in Sources */,
 				983074D52A8F635F00A060CD /* BaseViewController.swift in Sources */,
 				09171ACF2A9058B50097A9A5 /* WelecomeView.swift in Sources */,
@@ -320,6 +350,8 @@
 				983074F52A906C0100A060CD /* UserDataCollectionViewLayout.swift in Sources */,
 				983074E32A8F644C00A060CD /* View.swift in Sources */,
 				09171AB92A8F5B4C0097A9A5 /* AppDelegate.swift in Sources */,
+				09171AD72A9088910097A9A5 /* TabBarController.swift in Sources */,
+				0968149D2A90E5A2003D34B2 /* DetailResViewController.swift in Sources */,
 				983074F32A905CF000A060CD /* UserDataCell.swift in Sources */,
 				09171ABB2A8F5B4C0097A9A5 /* SceneDelegate.swift in Sources */,
 				09171AD12A9073950097A9A5 /* UserModel.swift in Sources */,
@@ -462,7 +494,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = N6LML762WM;
+				DEVELOPMENT_TEAM = JA7UDVTQBU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JunctionAsia2023/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -490,7 +522,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = N6LML762WM;
+				DEVELOPMENT_TEAM = JA7UDVTQBU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JunctionAsia2023/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
