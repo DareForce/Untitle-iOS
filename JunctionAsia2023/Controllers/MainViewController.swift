@@ -9,7 +9,7 @@ import UIKit
 
 class MainViewController: BaseViewController {
     var allergyDatum =  [String]()
-    var disLikeDatum = [String]()
+    var disLikeDatum = [Keyword]()
     var userName = "홍길동"
     
     private let mainView: MainView = MainView(frame: .zero)
@@ -45,7 +45,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.cellLabel.text = allergyDatum[indexPath.row]
             return cell
         } else {
-            cell.cellLabel.text = disLikeDatum[indexPath.row]
+            cell.cellLabel.text = disLikeDatum[indexPath.row].string
             return cell
         }
     }
@@ -59,7 +59,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let width = cell.cellLabel.intrinsicContentSize.width + 40
             return CGSize(width: width, height: 40)
         } else {
-            cell.cellLabel.text = disLikeDatum[indexPath.row]
+            cell.cellLabel.text = disLikeDatum[indexPath.row].string
             let width = cell.cellLabel.intrinsicContentSize.width + 40
             return CGSize(width: width, height: 40)
         }
