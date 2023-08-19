@@ -6,15 +6,17 @@
 //
 
 import UIKit
+import SnapKit
+
+
+// MARK: - Enum
+
+enum Size {
+    static let keywordLabelHeight: CGFloat = 44
+    static let keywordLabelXInset: CGFloat = 10
+}
 
 class UserDataCell: UICollectionViewCell {
-    
-    // MARK: - Enum
-    
-    private enum Size {
-        static let keywordLabelHeight: CGFloat = 44
-        static let keywordLabelXInset: CGFloat = 10
-    }
     
     // MARK: - Property
     
@@ -25,7 +27,7 @@ class UserDataCell: UICollectionViewCell {
             if isSelected {
                 allergyLabel.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
                 allergyLabel.textColor = .white
-                allergyLabel.backgroundColor = .blue
+                allergyLabel.backgroundColor = UIColor(hexString: "#3E24FF")
             } else {
                 allergyLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
                 allergyLabel.textColor = .black

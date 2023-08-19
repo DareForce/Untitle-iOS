@@ -19,6 +19,7 @@ enum KeywordType: CaseIterable {
         }
     }
 }
+
 struct Keyword {
     let string: String
     let type: KeywordType
@@ -66,7 +67,7 @@ class UserDataViewController: BaseViewController {
     // MARK: - View
     
     let titleLabel: UILabel = {
-        $0.text = "Allegies Info"
+        $0.text = "Allergies Info"
         $0.font = UIFont.systemFont(ofSize: 34, weight: .bold)
         $0.textAlignment = .left
         return $0
@@ -83,17 +84,20 @@ class UserDataViewController: BaseViewController {
     var allergyDataCollectionView: UICollectionView!
     
     let nextButton: UIButton = {
-        $0.configuration?.title = "다음"
+        $0.configuration?.title = "Next"
         $0.configurationUpdateHandler = { btn in
             switch btn.state {
             case .disabled:
                 btn.isEnabled = false
-                btn.configuration?.baseBackgroundColor = .gray
+                btn.configuration?.baseForegroundColor = UIColor(hexString: "#3E24FF")
+                btn.configuration?.baseBackgroundColor = UIColor(hexString: "#E6E2FF")
             default:
                 btn.isEnabled = true
-                btn.configuration?.baseBackgroundColor = .blue
+                btn.configuration?.baseForegroundColor = .white
+                btn.configuration?.baseBackgroundColor = UIColor(hexString: "#3E24FF")
             }
         }
+        $0.addTarget(self, action: #selector(moveToDisLikeViewController), for: .touchUpInside)
         return $0
     }(UIButton(configuration: .filled()))
     
@@ -149,9 +153,14 @@ class UserDataViewController: BaseViewController {
         
         nextButton.isEnabled = false
     }
+    
+    @objc func moveToDisLikeViewController() {
+        let dislikeViewCongtroller = UserDataDislikeViewController()
+        navigationController?.pushViewController(dislikeViewCongtroller, animated: true)
+    }
 }
 
-extension UserDataViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension UserDataViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return UserDataViewController.allergyType.count
     }
