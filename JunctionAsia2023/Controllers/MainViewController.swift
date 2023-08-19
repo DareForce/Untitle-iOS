@@ -8,6 +8,10 @@
 import UIKit
 
 class MainViewController: BaseViewController {
+    var allergyDatum =  [String]()
+    var disLikeDatum = [String]()
+    var userName = "홍길동"
+    
     private let mainView: MainView = MainView(frame: .zero)
     override func layout(){
         mainView.snp.makeConstraints{
@@ -21,16 +25,43 @@ class MainViewController: BaseViewController {
         self.mainView.AllergiesCollectionView.delegate = self
         self.mainView.AdditionalCollectionView.dataSource = self
         self.mainView.AllergiesCollectionView.dataSource = self
+        self.mainView.purpleNameLabel.text = userName
+        navigationController?.navigationBar.isHidden = true
     }
 }
-extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 15
+        if collectionView == mainView.AllergiesCollectionView {
+            return allergyDatum.count
+        } else {
+            return disLikeDatum.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AllergiesCollectionViewCell.identifier, for: indexPath) as! AllergiesCollectionViewCell
-        return cell
+        
+        if collectionView == mainView.AllergiesCollectionView {
+            cell.cellLabel.text = allergyDatum[indexPath.row]
+            return cell
+        } else {
+            cell.cellLabel.text = disLikeDatum[indexPath.row]
+            return cell
+        }
     }
     
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AllergiesCollectionViewCell.identifier, for: indexPath) as! AllergiesCollectionViewCell
+                
+        if collectionView == mainView.AllergiesCollectionView {
+            cell.cellLabel.text = allergyDatum[indexPath.row]
+            let width = cell.cellLabel.intrinsicContentSize.width + 40
+            return CGSize(width: width, height: 40)
+        } else {
+            cell.cellLabel.text = disLikeDatum[indexPath.row]
+            let width = cell.cellLabel.intrinsicContentSize.width + 40
+            return CGSize(width: width, height: 40)
+        }
+    }
 }

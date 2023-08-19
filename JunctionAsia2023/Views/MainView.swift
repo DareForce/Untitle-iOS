@@ -1,4 +1,4 @@
-//
+    //
 //  MainView.swift
 //  JunctionAsia2023
 //
@@ -9,7 +9,7 @@ import UIKit
 
 class MainView: UIView {
     var purple = false
-    public let AdditionalCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+    let AdditionalCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.register(AllergiesCollectionViewCell.self, forCellWithReuseIdentifier: AllergiesCollectionViewCell.identifier)
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -19,11 +19,11 @@ class MainView: UIView {
         $0.showsHorizontalScrollIndicator = false
     }
     private let additionalgisLabel = UILabel().then{
-        $0.text = "Allergies"
+        $0.text = "Additional"
         $0.textColor = UIColor(hexString: "#FFFFFF")
         $0.font = UIFont.systemFont(ofSize: 17)
     }
-    public let AllergiesCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+    let AllergiesCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.register(AllergiesCollectionViewCell.self, forCellWithReuseIdentifier: AllergiesCollectionViewCell.identifier)
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -96,7 +96,7 @@ class MainView: UIView {
         $0.layer.shadowOffset = CGSize(width: 0, height: 10)
         $0.layer.shadowRadius = 4
     }
-    private let purpleNameLabel = UILabel().then{
+    let purpleNameLabel = UILabel().then{
         $0.text = "Name"
         $0.textColor = UIColor(hexString: "#FFFFFF")
         $0.font = UIFont.boldSystemFont(ofSize: 22)

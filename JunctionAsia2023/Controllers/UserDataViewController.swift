@@ -63,6 +63,8 @@ class UserDataViewController: BaseViewController {
     // MARK: - Property
     
     static var allergyType = mockData
+    var userName: String?
+    var allergyDatum = [String]()
     
     // MARK: - View
     
@@ -107,7 +109,6 @@ class UserDataViewController: BaseViewController {
         setupCollectionView()
         
         super.viewDidLoad()
-
     }
     
     // MARK: - Method
@@ -119,7 +120,7 @@ class UserDataViewController: BaseViewController {
     override func layout() {
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(40)
+            $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.horizontalEdges.equalTo(16)
         }
         
@@ -156,6 +157,8 @@ class UserDataViewController: BaseViewController {
     
     @objc func moveToDisLikeViewController() {
         let dislikeViewCongtroller = UserDataDislikeViewController()
+        dislikeViewCongtroller.allergyDatum = allergyDatum
+        dislikeViewCongtroller.userName = userName
         navigationController?.pushViewController(dislikeViewCongtroller, animated: true)
     }
 }
@@ -184,6 +187,7 @@ extension UserDataViewController: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         nextButton.isEnabled = true
+        allergyDatum.append(UserDataViewController.allergyType[indexPath.row].string)
     }
 }
 

@@ -9,11 +9,13 @@ import Foundation
 import UIKit
 import SnapKit
 import Then
+
 protocol WelecomeViewDelegate: AnyObject {
     func manBtnClick(_ welecomView: WelecomeView)
     func womenBtnClick(_ welecomView: WelecomeView)
     func nextBtnClick(_ welecomView: WelecomeView)
 }
+
 class WelecomeView: UIView {
     private var selectedButtonTitleColor: UIColor? // 선택된 버튼의 타이틀 컬러를 추적하는 변수
     private var selectedButtonTitle: String? // 선택된 버튼의 타이틀을 추적하는 변수
@@ -49,16 +51,19 @@ class WelecomeView: UIView {
         $0.font = UIFont.systemFont(ofSize: 13)
     }
     private let ageTextField = UITextField().then{
+        $0.setLeftPaddingPoints(12)
         $0.backgroundColor = UIColor(hexString: "#F0F0F0")
         $0.layer.cornerRadius = 15
         $0.layer.masksToBounds = true
+        $0.keyboardType = .numberPad
     }
     private let ageLabel = UILabel().then{
         $0.text = "Age"
         $0.textColor =  UIColor(hexString: "#3C3C43")
         $0.font = UIFont.systemFont(ofSize: 13)
     }
-    private let nameTextField = UITextField().then{
+    let nameTextField = UITextField().then{
+        $0.setLeftPaddingPoints(12)
         $0.backgroundColor = UIColor(hexString: "#F0F0F0")
         $0.layer.cornerRadius = 15
         $0.layer.masksToBounds = true
@@ -80,9 +85,9 @@ class WelecomeView: UIView {
     }
     private func layout() {
         self.nextBtn.snp.makeConstraints{
-            $0.bottom.equalToSuperview().offset(-28)
-            $0.leading.equalToSuperview().offset(16)
-            $0.trailing.equalToSuperview().offset(-16)
+            $0.bottom.equalTo(safeAreaLayoutGuide).inset(16)
+            $0.leading.equalTo(safeAreaLayoutGuide).offset(16)
+            $0.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
             $0.height.equalTo(50)
         }
         self.womenBtn.snp.makeConstraints{
@@ -126,7 +131,7 @@ class WelecomeView: UIView {
             $0.leading.equalToSuperview().offset(16)
         }
         self.titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(40)
+            $0.top.equalToSuperview()
             $0.leading.equalToSuperview().offset(16)
         }
     }

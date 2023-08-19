@@ -18,14 +18,16 @@ class WelcomeViewController: BaseViewController {
     override func configure() {
         self.view.addSubview(welecomeView)
         self.welecomeView.delegate = self
+        
+        navigationController?.navigationBar.topItem?.title = ""
     }
 }
 extension WelcomeViewController: WelecomeViewDelegate {
     func nextBtnClick(_ welecomView: WelecomeView) {
         let userDataViewController = UserDataViewController()
+        userDataViewController.userName = self.welecomeView.nameTextField.text
         navigationController?.pushViewController(userDataViewController, animated: true)
     }
-    
     func manBtnClick(_ welecomView: WelecomeView) {
         
     }

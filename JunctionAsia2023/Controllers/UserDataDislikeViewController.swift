@@ -11,7 +11,10 @@ import SnapKit
 
 class UserDataDislikeViewController: BaseViewController {
     
+    var userName: String?
+    var allergyDatum: [String]?
     static var disLikeType = [Keyword]()
+    var disLikeDatum = [String]()
     var count: Int?  {
         didSet {
             if count == 0 {
@@ -116,8 +119,13 @@ class UserDataDislikeViewController: BaseViewController {
         navigationController?.pushViewController(searchResultViewController, animated: false)
     }
     @objc func moveToMainViewController() {
-        let mainViewController = MainViewController()
-        navigationController?.pushViewController(mainViewController, animated: true)
+        let tabBarController = TabBarController()
+        tabBarController.selectedIndex = 1
+        tabBarController.mainVC.allergyDatum = allergyDatum ?? []
+        tabBarController.mainVC.disLikeDatum = disLikeDatum ?? []
+        tabBarController.mainVC.userName = userName ?? "홍길동"
+        navigationController?.navigationBar.isHidden = true
+        navigationController?.pushViewController(tabBarController, animated: true)
     }
     
     override func configure() {
@@ -148,6 +156,7 @@ extension UserDataDislikeViewController: UICollectionViewDelegateFlowLayout, UIC
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let labelText = UserDataDislikeViewController.disLikeType[indexPath.row].string
+        disLikeDatum.append(labelText)
 
         return DisLikeResultCell.fittingSize(availableHeight: 45, labelText)
     }
