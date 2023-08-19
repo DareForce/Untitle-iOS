@@ -11,14 +11,15 @@ class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.view.backgroundColor = .white
+        self.configure()
+        self.layout()
     }
-    
     func layout() {
+        
     }
-    
     func configure() {
+        
     }
 }
 
