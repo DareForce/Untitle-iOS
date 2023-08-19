@@ -8,6 +8,7 @@
 import UIKit
 import Kingfisher
 import Alamofire
+
 class RestaurantViewController: BaseViewController {
     private var apidata:[RestaurantData] = []
     private let api = ResService()
@@ -21,7 +22,6 @@ class RestaurantViewController: BaseViewController {
     private let searchbar = UISearchBar().then{
         $0.placeholder = "Search Find Jaka Restaurant!"
         $0.searchBarStyle = .minimal
-
     }
     private let titleLabel = UILabel().then{
         $0.text = "Restaurant"

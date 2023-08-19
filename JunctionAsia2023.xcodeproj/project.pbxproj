@@ -39,6 +39,7 @@
 		983074FA2A908EFF00A060CD /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074F92A908EFF00A060CD /* SearchResultViewController.swift */; };
 		983074FC2A90D6BA00A060CD /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074FB2A90D6BA00A060CD /* SearchResultCell.swift */; };
 		983074FE2A90E19E00A060CD /* DisLikeResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074FD2A90E19E00A060CD /* DisLikeResultCell.swift */; };
+		983075002A91415B00A060CD /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074FF2A91415B00A060CD /* UITextField+Extension.swift */; };
 		9A7A54137625587D2E798F2A /* Pods_JunctionAsia2023.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E745AEC367791908A39015FB /* Pods_JunctionAsia2023.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		983074F92A908EFF00A060CD /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		983074FB2A90D6BA00A060CD /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		983074FD2A90E19E00A060CD /* DisLikeResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisLikeResultCell.swift; sourceTree = "<group>"; };
+		983074FF2A91415B00A060CD /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		B09F0A3D3AEB6E8FA9C00233 /* Pods-JunctionAsia2023.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JunctionAsia2023.release.xcconfig"; path = "Target Support Files/Pods-JunctionAsia2023/Pods-JunctionAsia2023.release.xcconfig"; sourceTree = "<group>"; };
 		CD8EDBAD5A2BE65CD04EC36F /* Pods-JunctionAsia2023.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JunctionAsia2023.debug.xcconfig"; path = "Target Support Files/Pods-JunctionAsia2023/Pods-JunctionAsia2023.debug.xcconfig"; sourceTree = "<group>"; };
 		E745AEC367791908A39015FB /* Pods_JunctionAsia2023.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JunctionAsia2023.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				983074E62A8F657700A060CD /* ViewController+Extension.swift */,
+				983074FF2A91415B00A060CD /* UITextField+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				09171AE12A90BC530097A9A5 /* AllergiesCollectionViewCell.swift in Sources */,
 				09D5FE202A913C740082EB28 /* DetailService.swift in Sources */,
 				09171ABD2A8F5B4C0097A9A5 /* ViewController.swift in Sources */,
+				983075002A91415B00A060CD /* UITextField+Extension.swift in Sources */,
 				09171ADD2A9089080097A9A5 /* HistoryViewController.swift in Sources */,
 				983074ED2A90517500A060CD /* UserDataViewController.swift in Sources */,
 				983074D52A8F635F00A060CD /* BaseViewController.swift in Sources */,
