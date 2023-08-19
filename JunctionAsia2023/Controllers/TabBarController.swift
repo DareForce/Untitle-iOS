@@ -9,6 +9,10 @@ import UIKit
 
 class TabBarController: UITabBarController,UITabBarControllerDelegate {
 
+    let mainVC = MainViewController()
+//    var allergyDatum: [String]?
+//    var disLikeDatum: [String]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -17,7 +21,8 @@ class TabBarController: UITabBarController,UITabBarControllerDelegate {
         vc1.tabBarItem.selectedImage = UIImage(systemName: "fork.knife")
         vc1.navigationBar.isHidden = true
         vc1.tabBarItem.image = UIImage(systemName: "fork.knife")
-        let vc2 = UINavigationController(rootViewController: MainViewController())
+
+        let vc2 = UINavigationController(rootViewController: mainVC)
         vc2.navigationBar.isHidden = true
 
         vc2.tabBarItem.image = UIImage(systemName: "lanyardcard.fill")

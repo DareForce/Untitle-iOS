@@ -18,6 +18,8 @@ class WelcomeViewController: BaseViewController {
     override func configure() {
         self.view.addSubview(welecomeView)
         self.welecomeView.delegate = self
+        
+        navigationController?.navigationBar.topItem?.title = ""
     }
 }
 extension WelcomeViewController: WelecomeViewDelegate {
@@ -25,7 +27,6 @@ extension WelcomeViewController: WelecomeViewDelegate {
         let userDataViewController = UserDataViewController()
         navigationController?.pushViewController(userDataViewController, animated: true)
     }
-    
     func manBtnClick(_ welecomView: WelecomeView) {
         
     }
