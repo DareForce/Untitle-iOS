@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.7.1)
+  - Kingfisher (7.9.0)
   - lottie-ios (4.2.0)
   - SkeletonView (1.30.4)
   - SnapKit (5.6.0)
@@ -7,6 +8,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - Kingfisher (~> 7.0)
   - lottie-ios
   - SkeletonView
   - SnapKit
@@ -15,6 +17,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Kingfisher
     - lottie-ios
     - SkeletonView
     - SnapKit
@@ -22,11 +25,12 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
+  Kingfisher: 59f908b6d2f403b0a3e539debb0eec05cb27002c
   lottie-ios: 809ecf2d460ed650a6aed7aa88b2ec45fab4779c
   SkeletonView: 5a050f6411e697abd4cda0a8d767013399dccd69
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: 75fdbd672234f4bfc785f512e19e752a2e73434e
+PODFILE CHECKSUM: 1e0fe62bc336cdee620f356c0194f7f90eb078e6
 
 COCOAPODS: 1.11.3
