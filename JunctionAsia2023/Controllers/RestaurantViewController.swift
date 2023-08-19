@@ -111,7 +111,10 @@ extension RestaurantViewController: UITableViewDelegate, UITableViewDataSource {
         let nextVC = DetailResViewController()
         if let navigationController = self.navigationController {
             self.navigationController?.navigationBar.isHidden = false
-    
+            if let imageURL = URL(string: apidata[indexPath.row].thumbnail ?? ""){
+                nextVC.topVIew.kf.setImage(with: imageURL)
+            }
+            nextVC.id = self.apidata[indexPath.row].restaurantId
             navigationController.pushViewController(nextVC, animated: true)
         }
     }

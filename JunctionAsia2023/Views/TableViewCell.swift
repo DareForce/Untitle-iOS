@@ -44,7 +44,7 @@ class TableViewCell: UITableViewCell {
             $0.leading.equalTo(img.snp.trailing).offset(17)
         }
         self.titleLabel.snp.makeConstraints{
-            $0.top.equalTo(resNameLabel.snp.bottom).offset(0)
+            $0.top.equalTo(resNameLabel.snp.bottom).offset(5)
             $0.leading.equalTo(img.snp.trailing).offset(17)
         }
         self.resNameLabel.snp.makeConstraints{
