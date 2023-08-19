@@ -96,7 +96,7 @@ class MainView: UIView {
         $0.layer.shadowOffset = CGSize(width: 0, height: 10)
         $0.layer.shadowRadius = 4
     }
-    private let purpleNameLabel = UILabel().then{
+    let purpleNameLabel = UILabel().then{
         $0.text = "Name"
         $0.textColor = UIColor(hexString: "#FFFFFF")
         $0.font = UIFont.boldSystemFont(ofSize: 22)

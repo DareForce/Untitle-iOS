@@ -11,6 +11,7 @@ import SnapKit
 
 class UserDataDislikeViewController: BaseViewController {
     
+    var userName: String?
     var allergyDatum: [String]?
     static var disLikeType = [Keyword]()
     var disLikeDatum = [String]()
@@ -118,16 +119,12 @@ class UserDataDislikeViewController: BaseViewController {
         navigationController?.pushViewController(searchResultViewController, animated: false)
     }
     @objc func moveToMainViewController() {
-        print("========= 디스라이크 뷰컨 ========")
         let tabBarController = TabBarController()
         tabBarController.selectedIndex = 1
         tabBarController.mainVC.allergyDatum = allergyDatum ?? []
         tabBarController.mainVC.disLikeDatum = disLikeDatum ?? []
-        print(allergyDatum)
-        print(disLikeDatum)
-//        print(tabBarController.allergyDatum)
-//        print(tabBarController.disLikeDatum)
-        print("========= 디스라이크 뷰컨 ========")
+        tabBarController.mainVC.userName = userName ?? "홍길동"
+        navigationController?.navigationBar.isHidden = true
         navigationController?.pushViewController(tabBarController, animated: true)
     }
     

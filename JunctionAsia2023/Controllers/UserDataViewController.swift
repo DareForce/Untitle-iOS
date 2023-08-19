@@ -63,6 +63,7 @@ class UserDataViewController: BaseViewController {
     // MARK: - Property
     
     static var allergyType = mockData
+    var userName: String?
     var allergyDatum = [String]()
     
     // MARK: - View
@@ -157,10 +158,7 @@ class UserDataViewController: BaseViewController {
     @objc func moveToDisLikeViewController() {
         let dislikeViewCongtroller = UserDataDislikeViewController()
         dislikeViewCongtroller.allergyDatum = allergyDatum
-        print("========= 유저데이터 뷰컨 ========")
-        print(allergyDatum)
-        print(dislikeViewCongtroller.allergyDatum)
-        print("========= 유저데이터 뷰컨 ========")
+        dislikeViewCongtroller.userName = userName
         navigationController?.pushViewController(dislikeViewCongtroller, animated: true)
     }
 }

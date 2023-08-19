@@ -19,19 +19,17 @@ class TabBarController: UITabBarController,UITabBarControllerDelegate {
         self.delegate = self
         let vc1 = UINavigationController(rootViewController: RestaurantViewController())
         vc1.tabBarItem.selectedImage = UIImage(systemName: "fork.knife")
-        vc1.navigationBar.isHidden = true
         vc1.tabBarItem.image = UIImage(systemName: "fork.knife")
+        vc1.title = "Restaurant"
 
         let vc2 = UINavigationController(rootViewController: mainVC)
-        vc2.navigationBar.isHidden = true
-
         vc2.tabBarItem.image = UIImage(systemName: "lanyardcard.fill")
         vc2.tabBarItem.selectedImage = UIImage(systemName: "lanyardcard.fill")
+        vc2.title = "Food ID"
         let vc3 = UINavigationController(rootViewController: HistoryViewController())
-        vc3.navigationBar.isHidden = true
-
         vc3.tabBarItem.selectedImage = UIImage(systemName: "clock.fill")
         vc3.tabBarItem.image = UIImage(systemName: "clock")
+        vc3.title = "My Data"
         
    
         vc1.navigationItem.largeTitleDisplayMode = .always

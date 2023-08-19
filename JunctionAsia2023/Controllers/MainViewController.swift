@@ -10,6 +10,7 @@ import UIKit
 class MainViewController: BaseViewController {
     var allergyDatum =  [String]()
     var disLikeDatum = [String]()
+    var userName = "홍길동"
     
     private let mainView: MainView = MainView(frame: .zero)
     override func layout(){
@@ -24,7 +25,7 @@ class MainViewController: BaseViewController {
         self.mainView.AllergiesCollectionView.delegate = self
         self.mainView.AdditionalCollectionView.dataSource = self
         self.mainView.AllergiesCollectionView.dataSource = self
-        
+        self.mainView.purpleNameLabel.text = userName
         navigationController?.navigationBar.isHidden = true
     }
 }

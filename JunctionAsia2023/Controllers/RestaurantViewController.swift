@@ -8,6 +8,7 @@
 import UIKit
 import Kingfisher
 import Alamofire
+import SnapKit
 
 class RestaurantViewController: BaseViewController {
     private var apidata:[RestaurantData] = []
@@ -72,6 +73,9 @@ class RestaurantViewController: BaseViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.addsubview()
+        
+        navigationItem.title = ""
+        navigationController?.navigationBar.tintColor = .white
     }
     override func viewWillAppear(_ animated: Bool) {
         self.api.getAllBrand { response in
@@ -110,7 +114,6 @@ extension RestaurantViewController: UITableViewDelegate, UITableViewDataSource {
    
         let nextVC = DetailResViewController()
         if let navigationController = self.navigationController {
-            self.navigationController?.navigationBar.isHidden = false
             if let imageURL = URL(string: apidata[indexPath.row].thumbnail ?? ""){
                 nextVC.topVIew.kf.setImage(with: imageURL)
             }

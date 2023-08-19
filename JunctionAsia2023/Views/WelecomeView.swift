@@ -62,7 +62,7 @@ class WelecomeView: UIView {
         $0.textColor =  UIColor(hexString: "#3C3C43")
         $0.font = UIFont.systemFont(ofSize: 13)
     }
-    private let nameTextField = UITextField().then{
+    let nameTextField = UITextField().then{
         $0.setLeftPaddingPoints(12)
         $0.backgroundColor = UIColor(hexString: "#F0F0F0")
         $0.layer.cornerRadius = 15
