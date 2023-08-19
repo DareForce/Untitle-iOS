@@ -28,7 +28,7 @@ class WelecomeView: UIView {
         $0.layer.masksToBounds = true
     }
     private let womenBtn = UIButton().then{
-        $0.setTitle("Women", for: .normal)
+        $0.setTitle("Female", for: .normal)
         $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         $0.setTitleColor(UIColor(hexString: "#3C3C43", alpha: 0.6), for: .normal)
         $0.backgroundColor = UIColor(hexString: "#F0F0F0")
@@ -36,7 +36,7 @@ class WelecomeView: UIView {
         $0.layer.masksToBounds = true
     }
     private let manBtn = UIButton().then{
-        $0.setTitle("Men", for: .normal)
+        $0.setTitle("Male", for: .normal)
         $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         $0.setTitleColor(UIColor(hexString: "#3C3C43", alpha: 0.6), for: .normal)
         $0.backgroundColor = UIColor(hexString: "#F0F0F0")

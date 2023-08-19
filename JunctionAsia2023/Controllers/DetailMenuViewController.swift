@@ -1,13 +1,13 @@
 //
-//  DetailResViewController.swift
+//  DetailMenuViewController.swift
 //  JunctionAsia2023
 //
-//  Created by 최지철 on 2023/08/19.
+//  Created by 최지철 on 2023/08/20.
 //
 
 import UIKit
 
-class DetailResViewController: BaseViewController {
+class DetailMenuViewController: BaseViewController {
     public var id:Int?
     private var apidata:[MenuData] = []
     private let api = DetailService()
@@ -62,7 +62,6 @@ class DetailResViewController: BaseViewController {
 
     }
     override func viewWillAppear(_ animated: Bool) {
-
         self.api.getAllBrand(restaurantId: self.id ?? 0) { response in
             switch response {
             case .success(let data):
@@ -78,10 +77,10 @@ class DetailResViewController: BaseViewController {
         }
     }
 }
-extension DetailResViewController: UITableViewDelegate, UITableViewDataSource{
+extension DetailMenuViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return apidata.count
-    }    
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
         cell.resNameLabel.text = apidata[indexPath.row].name
