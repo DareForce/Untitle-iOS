@@ -67,6 +67,9 @@ class WelecomeView: UIView {
         $0.backgroundColor = UIColor(hexString: "#F0F0F0")
         $0.layer.cornerRadius = 15
         $0.layer.masksToBounds = true
+        $0.autocorrectionType = .no
+        $0.spellCheckingType = .yes
+        $0.autocapitalizationType = .none
     }
     private let nameLabel = UILabel().then{
         $0.text = "Name"
