@@ -6,21 +6,25 @@
 //
 
 import UIKit
+import SnapKit
 
 class TableViewCell: UITableViewCell {
     static let identifier = "TableViewCell"
+    
     public var img = UIImageView().then{
-        $0.image = UIImage(systemName: "xmark")
+        $0.backgroundColor = .systemGray4
         $0.contentMode = .scaleToFill
         $0.backgroundColor = .clear
         $0.layer.cornerRadius = 15
         $0.clipsToBounds = true
     }
-    public var resNameLabel = UILabel().then {
+    public var resNameLabel: UILabel = {
         $0.text = "식당"
         $0.textColor = .black
+        $0.numberOfLines = 0
         $0.font = UIFont.boldSystemFont(ofSize: 20)
-    }
+        return $0
+    }(UILabel())
     public var titleLabel = UILabel().then{
         $0.text = "KoreanFood"
         $0.textColor =  UIColor(hexString: "#3C3C43", alpha: 0.6)
@@ -66,15 +70,4 @@ class TableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

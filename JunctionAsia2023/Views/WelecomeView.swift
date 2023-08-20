@@ -21,6 +21,13 @@ class WelecomeView: UIView {
     private var selectedButtonTitle: String? // 선택된 버튼의 타이틀을 추적하는 변수
     weak var delegate: WelecomeViewDelegate?
     
+    private let hStackView: UIStackView = {
+        $0.axis = .horizontal
+        $0.spacing = 6
+        $0.distribution = .fillEqually
+        return $0
+    }(UIStackView())
+    
     private let nextBtn = UIButton().then{
         $0.setTitle("Next", for: .normal)
         $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
@@ -28,6 +35,7 @@ class WelecomeView: UIView {
         $0.backgroundColor = UIColor(hexString: "#E6E2FF")
         $0.layer.cornerRadius = 15
         $0.layer.masksToBounds = true
+        $0.isEnabled = false
     }
     private let womenBtn = UIButton().then{
         $0.setTitle("Female", for: .normal)
@@ -39,7 +47,7 @@ class WelecomeView: UIView {
     }
     private let manBtn = UIButton().then{
         $0.setTitle("Male", for: .normal)
-        $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         $0.setTitleColor(UIColor(hexString: "#3C3C43", alpha: 0.6), for: .normal)
         $0.backgroundColor = UIColor(hexString: "#F0F0F0")
         $0.layer.cornerRadius = 15
@@ -77,7 +85,7 @@ class WelecomeView: UIView {
         $0.font = UIFont.systemFont(ofSize: 13)
     }
     private let titleLabel = UILabel().then{
-        $0.text = "Hello"
+        $0.text = "Hello!"
         $0.textColor = .black
         $0.font = UIFont.boldSystemFont(ofSize: 34)
     }
@@ -87,25 +95,20 @@ class WelecomeView: UIView {
         $0.font = UIFont.systemFont(ofSize: 17)
     }
     private func layout() {
+        
         self.nextBtn.snp.makeConstraints{
             $0.bottom.equalTo(safeAreaLayoutGuide).inset(16)
             $0.leading.equalTo(safeAreaLayoutGuide).offset(16)
             $0.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
             $0.height.equalTo(50)
         }
-        self.womenBtn.snp.makeConstraints{
-            $0.top.equalTo(sexLabel.snp.bottom).offset(0)
-            $0.trailing.equalToSuperview().offset(-16)
+        
+        self.hStackView.snp.makeConstraints {
             $0.height.equalTo(50)
-            $0.width.equalTo(176)
+            $0.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
+            $0.top.equalTo(sexLabel.snp.bottom).offset(5)
         }
-        self.manBtn.snp.makeConstraints{
-            $0.top.equalTo(sexLabel.snp.bottom).offset(0)
-            $0.leading.equalToSuperview().offset(16)
-            $0.width.equalTo(176)
-            $0.height.equalTo(50)
-        }
-        self.sexLabel.snp.makeConstraints{
+        self.sexLabel.snp.makeConstraints {
             $0.top.equalTo(ageTextField.snp.bottom).offset(20)
             $0.leading.equalToSuperview().offset(28)
         }
@@ -146,8 +149,9 @@ class WelecomeView: UIView {
         self.addSubview(ageLabel)
         self.addSubview(ageTextField)
         self.addSubview(sexLabel)
-        self.addSubview(manBtn)
-        self.addSubview(womenBtn)
+        self.addSubview(hStackView)
+        hStackView.addArrangedSubview(manBtn)
+        hStackView.addArrangedSubview(womenBtn)
         self.addSubview(nextBtn)
     }
     private func configure() {

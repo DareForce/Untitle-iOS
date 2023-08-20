@@ -25,7 +25,10 @@ class Login {
             "allergies" : allergies,
             "addtional" : addtional,
         ]
-        AF.request(url, method: .post, parameters: parameter, encoding: JSONEncoding.default).responseDecodable(of: ResponseData.self) { response in
+        AF.request(url,
+                   method: .post,
+                   parameters: parameter,
+                   encoding: JSONEncoding.default).responseDecodable(of: ResponseData.self) { response in
             switch response.result {
             case.success(let response) :
                 comletion(.success(response))

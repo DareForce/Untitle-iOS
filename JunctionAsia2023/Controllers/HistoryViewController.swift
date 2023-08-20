@@ -11,7 +11,6 @@ class HistoryViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
 }

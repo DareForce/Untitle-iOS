@@ -11,12 +11,12 @@ class DetailResViewController: BaseViewController {
     public var id:Int?
     private var apidata:[MenuData] = []
     private let api = DetailService()
-    public var ressubLabel = UILabel().then{
+    var ressubLabel = UILabel().then{
         $0.text = "School|Food"
         $0.textColor =  UIColor(hexString: "#FFFFFF", alpha: 0.6)
         $0.font = UIFont.boldSystemFont(ofSize: 20)
     }
-    public var resNameLabel = UILabel().then{
+    var resNameLabel = UILabel().then{
         $0.text = "Restaurant"
         $0.textColor = .white
         $0.font = UIFont.boldSystemFont(ofSize: 34)
@@ -81,25 +81,34 @@ class DetailResViewController: BaseViewController {
 extension DetailResViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return apidata.count
-    }    
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
+        
         cell.resNameLabel.text = apidata[indexPath.row].name
-        cell.resNameLabel.font = UIFont.boldSystemFont(ofSize: 17)
-        cell.titleLabel.text = "⚠️ " + apidata[indexPath.row].ingredients[0]
+        cell.resNameLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        
+        if apidata[indexPath.row].ingredients.isEmpty {
+            cell.titleLabel.text = ""
+        } else {
+            cell.titleLabel.text = "⚠️ " + apidata[indexPath.row].ingredients[0]
+        }
+        
         if let imageURL = URL(string: apidata[indexPath.row].thumbnail ){
             cell.img.kf.setImage(with: imageURL)
         }
+        
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         cell.subtitleLabel.textColor =  UIColor(hexString: "#3E24FF")
         cell.subtitleLabel.font = UIFont.boldSystemFont(ofSize: 17)
-        cell.subtitleLabel.text = numberFormatter.string(from: NSNumber(value: apidata[indexPath.row].price))! + "원"
+        cell.subtitleLabel.text = "₩" + numberFormatter.string(from: NSNumber(value: apidata[indexPath.row].price))!
+        cell.selectionStyle = .none
         return cell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
-
     }
-    
 }
