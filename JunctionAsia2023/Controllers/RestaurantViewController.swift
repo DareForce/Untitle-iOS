@@ -17,17 +17,21 @@ class RestaurantViewController: BaseViewController {
         $0.backgroundColor = UIColor.white
         $0.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.identifier)
     }
-    private let spaceView = UIView().then{
+    private let spaceView = UIView().then {
         $0.backgroundColor = UIColor.systemGray5
+        $0.layer.masksToBounds = false
+        $0.layer.shadowColor = UIColor.lightGray.cgColor
+        $0.layer.shadowOpacity = 0.1
+        $0.layer.shadowOffset = CGSize(width: 1, height: 20)
     }
     private let searchbar = UISearchBar().then{
-        $0.placeholder = "Search Find Jaka Restaurant!"
+        $0.placeholder = "Search"
         $0.searchBarStyle = .minimal
     }
     private let titleLabel = UILabel().then{
         $0.text = "Restaurant"
         $0.textColor = .black
-        $0.font = UIFont.boldSystemFont(ofSize: 34)
+        $0.font = UIFont.systemFont(ofSize: 34, weight: .bold)
     }
     private let subtitleLabel = UILabel().then{
         $0.text = "Choose your menu without worrying!"+"\n"+"JAKA always considering your health"
@@ -43,25 +47,22 @@ class RestaurantViewController: BaseViewController {
         self.view.addSubview(subtitleLabel)
     }
     override func layout() {
-        self.tableView.snp.makeConstraints{
-            $0.top.equalTo(spaceView.snp.bottom).offset(0)
-            $0.trailing.leading.equalToSuperview()
+        self.tableView.snp.makeConstraints {
+            $0.top.equalTo(searchbar.snp.bottom)
+            $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
-        self.spaceView.snp.makeConstraints{
+        self.spaceView.snp.makeConstraints {
             $0.top.equalTo(searchbar.snp.bottom).offset(21)
-            $0.leading.trailing.equalToSuperview().offset(0)
-            $0.height.equalTo(5)
+            $0.horizontalEdges.equalToSuperview()
         }
         self.searchbar.snp.makeConstraints{
             $0.top.equalTo(subtitleLabel.snp.bottom).offset(12)
-            $0.leading.equalToSuperview().offset(16)
-            $0.trailing.equalToSuperview().offset(-16)
-
+            $0.horizontalEdges.equalToSuperview().inset(16)
             $0.height.equalTo(42)
         }
         self.titleLabel.snp.makeConstraints{
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(40)
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             $0.leading.equalToSuperview().offset(16)
         }
         self.subtitleLabel.snp.makeConstraints{
@@ -100,7 +101,8 @@ extension RestaurantViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
         cell.resNameLabel.text = apidata[indexPath.row].name
         cell.titleLabel.text = apidata[indexPath.row].category
-        cell.subtitleLabel.text = apidata[indexPath.row].menus[0] 
+        cell.subtitleLabel.text = apidata[indexPath.row].menus[0]
+        
         if let imageURL = URL(string: apidata[indexPath.row].thumbnail ?? "") {
             cell.img.kf.setImage(with: imageURL)
         }
@@ -108,16 +110,17 @@ extension RestaurantViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
-
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-   
         let nextVC = DetailResViewController()
+        
         if let navigationController = self.navigationController {
             if let imageURL = URL(string: apidata[indexPath.row].thumbnail ?? ""){
                 nextVC.topVIew.kf.setImage(with: imageURL)
             }
             nextVC.id = self.apidata[indexPath.row].restaurantId
+            nextVC.resNameLabel.text = apidata[indexPath.row].name
+            nextVC.ressubLabel.text = apidata[indexPath.row].category
             navigationController.pushViewController(nextVC, animated: true)
         }
     }

@@ -13,11 +13,15 @@ class TabBarController: UITabBarController,UITabBarControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.view.backgroundColor = .white
+
+        self.tabBarController?.tabBar.tintColor = .red
         self.delegate = self
         let vc1 = UINavigationController(rootViewController: RestaurantViewController())
         vc1.tabBarItem.selectedImage = UIImage(systemName: "fork.knife")
         vc1.tabBarItem.image = UIImage(systemName: "fork.knife")
+        
         vc1.title = "Restaurant"
 
         let vc2 = UINavigationController(rootViewController: mainVC)
@@ -26,8 +30,8 @@ class TabBarController: UITabBarController,UITabBarControllerDelegate {
         vc2.title = "Food ID"
         
         let vc3 = UINavigationController(rootViewController: HistoryViewController())
-        vc3.tabBarItem.selectedImage = UIImage(systemName: "clock.fill")
-        vc3.tabBarItem.image = UIImage(systemName: "clock")
+        vc3.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
+        vc3.tabBarItem.image = UIImage(systemName: "person.fill")
         vc3.title = "My Data"
         
         vc1.navigationItem.largeTitleDisplayMode = .always
@@ -38,7 +42,7 @@ class TabBarController: UITabBarController,UITabBarControllerDelegate {
         self.tabBar.layer.borderWidth = 0.5
         self.tabBar.layer.borderColor = UIColor.systemGray5.cgColor
         self.tabBar.clipsToBounds = true
-        self.tabBar.unselectedItemTintColor = .darkGray
+        self.tabBar.unselectedItemTintColor = .systemGray
         self.tabBar.tintColor = UIColor(hexString: "#007AFF")
 
 

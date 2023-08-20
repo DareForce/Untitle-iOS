@@ -36,6 +36,7 @@ class UserDataDislikeViewController: BaseViewController {
     
     let descriptionLabel: UILabel = {
         $0.text = "Any more ingredients you don't want?"
+        $0.textColor = .secondaryLabel
         $0.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         $0.textAlignment = .left
         return $0

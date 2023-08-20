@@ -64,7 +64,17 @@ class UserDataViewController: BaseViewController {
     
     static var allergyType = mockData
     var userName: String?
-    var allergyDatum = [String]()
+    var allergyDatum = [String]() {
+        didSet {
+            if allergyDatum.count > 0 {
+                nextButton.setTitleColor(.white, for: .normal)
+                nextButton.backgroundColor = UIColor(hexString: "#3E24FF")
+            } else {
+                nextButton.setTitleColor(UIColor(hexString: "#3E24FF"), for: .normal)
+                nextButton.backgroundColor = UIColor(hexString: "#E6E2FF")
+            }
+        }
+    }
     
     // MARK: - View
     
@@ -86,22 +96,16 @@ class UserDataViewController: BaseViewController {
     var allergyDataCollectionView: UICollectionView!
     
     let nextButton: UIButton = {
-        $0.configuration?.title = "Next"
-        $0.configurationUpdateHandler = { btn in
-            switch btn.state {
-            case .disabled:
-                btn.isEnabled = false
-                btn.configuration?.baseForegroundColor = UIColor(hexString: "#3E24FF")
-                btn.configuration?.baseBackgroundColor = UIColor(hexString: "#E6E2FF")
-            default:
-                btn.isEnabled = true
-                btn.configuration?.baseForegroundColor = .white
-                btn.configuration?.baseBackgroundColor = UIColor(hexString: "#3E24FF")
-            }
-        }
+        $0.setTitle("Next", for: .normal)
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        $0.setTitleColor(UIColor(hexString: "#3E24FF"), for: .normal)
+        $0.backgroundColor = UIColor(hexString: "#E6E2FF")
+        $0.layer.cornerRadius = 15
+        $0.layer.masksToBounds = true
+        $0.isEnabled = false
         $0.addTarget(self, action: #selector(moveToDisLikeViewController), for: .touchUpInside)
         return $0
-    }(UIButton(configuration: .filled()))
+    }(UIButton())
     
     // MARK: - LifeCycle
     

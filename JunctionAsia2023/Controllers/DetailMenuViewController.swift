@@ -59,7 +59,6 @@ class DetailMenuViewController: BaseViewController {
         self.addsubview()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-
     }
     override func viewWillAppear(_ animated: Bool) {
         self.api.getAllBrand(restaurantId: self.id ?? 0) { response in
@@ -85,7 +84,7 @@ extension DetailMenuViewController: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
         cell.resNameLabel.text = apidata[indexPath.row].name
         cell.resNameLabel.font = UIFont.boldSystemFont(ofSize: 17)
-        cell.titleLabel.text = "⚠️ " + apidata[indexPath.row].ingredients[0]
+        cell.titleLabel.text = "⚠️ " + (apidata[indexPath.row].ingredients[0] ?? "")
         if let imageURL = URL(string: apidata[indexPath.row].thumbnail ){
             cell.img.kf.setImage(with: imageURL)
         }
@@ -98,7 +97,5 @@ extension DetailMenuViewController: UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
-
     }
-    
 }
