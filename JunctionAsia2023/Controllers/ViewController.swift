@@ -6,15 +6,13 @@
 //
 
 import UIKit
+import SnapKit
+import Then
 
-class ViewController: UIViewController {
+class ViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
-        // Do any additional setup after loading the view.
     }
-
-
 }
 

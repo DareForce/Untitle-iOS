@@ -1,13 +1,13 @@
 # Junction Asia 2023-iOS
 Junction Asia 2023 프로젝트입니다.
 
-### Team Members
+## Team Members
 - 기획: 최윤아(Bonnie)
 - 디자인: 박진영(Claudia)
 - 백엔드: 김승은(Binfoo)
-- iOS: 지준용(Eddy), 최지철(Galric)
+- iOS: 지준용(Eddy), 최지철(Garlic)
 
-# Title
+## Title
 - App Description
 
 
@@ -25,4 +25,4 @@ Junction Asia 2023 프로젝트입니다.
 
 
 ## 🔏 License
-- 
+  - 
