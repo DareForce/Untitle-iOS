@@ -85,7 +85,7 @@ class WelecomeView: UIView {
         $0.font = UIFont.systemFont(ofSize: 13)
     }
     private let titleLabel = UILabel().then{
-        $0.text = "Hello"
+        $0.text = "Hello!"
         $0.textColor = .black
         $0.font = UIFont.boldSystemFont(ofSize: 34)
     }
