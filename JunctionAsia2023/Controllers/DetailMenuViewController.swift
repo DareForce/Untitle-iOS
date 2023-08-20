@@ -82,17 +82,19 @@ extension DetailMenuViewController: UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
+        
         cell.resNameLabel.text = apidata[indexPath.row].name
         cell.resNameLabel.font = UIFont.boldSystemFont(ofSize: 17)
         cell.titleLabel.text = "⚠️ " + (apidata[indexPath.row].ingredients[0] ?? "")
-        if let imageURL = URL(string: apidata[indexPath.row].thumbnail ){
+        if let imageURL = URL(string: apidata[indexPath.row].thumbnail) {
             cell.img.kf.setImage(with: imageURL)
         }
+        
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         cell.subtitleLabel.textColor =  UIColor(hexString: "#3E24FF")
-        cell.subtitleLabel.font = UIFont.boldSystemFont(ofSize: 17)
-        cell.subtitleLabel.text = numberFormatter.string(from: NSNumber(value: apidata[indexPath.row].price))! + "원"
+        cell.subtitleLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        cell.subtitleLabel.text = "₩" + numberFormatter.string(from: NSNumber(value: apidata[indexPath.row].price))!
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

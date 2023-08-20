@@ -16,11 +16,13 @@ class TableViewCell: UITableViewCell {
         $0.layer.cornerRadius = 15
         $0.clipsToBounds = true
     }
-    public var resNameLabel = UILabel().then {
+    public var resNameLabel: UILabel = {
         $0.text = "식당"
         $0.textColor = .black
+        $0.numberOfLines = 0
         $0.font = UIFont.boldSystemFont(ofSize: 20)
-    }
+        return $0
+    }(UILabel())
     public var titleLabel = UILabel().then{
         $0.text = "KoreanFood"
         $0.textColor =  UIColor(hexString: "#3C3C43", alpha: 0.6)

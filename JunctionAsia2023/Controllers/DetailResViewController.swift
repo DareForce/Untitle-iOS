@@ -102,7 +102,8 @@ extension DetailResViewController: UITableViewDelegate, UITableViewDataSource{
         numberFormatter.numberStyle = .decimal
         cell.subtitleLabel.textColor =  UIColor(hexString: "#3E24FF")
         cell.subtitleLabel.font = UIFont.boldSystemFont(ofSize: 17)
-        cell.subtitleLabel.text = numberFormatter.string(from: NSNumber(value: apidata[indexPath.row].price))! + "원"
+        cell.subtitleLabel.text = "₩" + numberFormatter.string(from: NSNumber(value: apidata[indexPath.row].price))!
+        cell.selectionStyle = .none
         return cell
     }
     
