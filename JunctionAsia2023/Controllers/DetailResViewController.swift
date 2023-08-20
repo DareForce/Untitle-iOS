@@ -109,11 +109,24 @@ extension DetailResViewController: UITableViewDelegate, UITableViewDataSource{
         cell.subtitleLabel.textColor =  UIColor(hexString: "#3E24FF")
         cell.subtitleLabel.font = UIFont.boldSystemFont(ofSize: 17)
         cell.subtitleLabel.text = "₩" + numberFormatter.string(from: NSNumber(value: apidata[indexPath.row].price))!
-        cell.selectionStyle = .none
+//        cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let alert = UIAlertController(title: "May I take your order?", message: nil, preferredStyle: .alert)
+        let orderButton = UIAlertAction(title: "Order", style: .default) { _ in
+            self.navigationController?.popViewController(animated: true)
+        }
+        let cancelButton = UIAlertAction(title: "No", style: .destructive)
+        alert.addAction(orderButton)
+        alert.addAction(cancelButton)
+        
+        present(alert, animated: true)
+        print(indexPath)
     }
 }
