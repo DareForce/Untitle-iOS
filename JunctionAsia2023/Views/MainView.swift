@@ -210,14 +210,12 @@ class MainView: UIView {
 
 
         if purple != true {
-
-            UIView.transition(with: greenView, duration: 1.0, options: transitionOptions, animations: {
-
+            UIView.transition(with: greenView, duration: 0.3, options: transitionOptions, animations: {
+                self.purpleView.isHidden = false
             })
 
-            UIView.transition(with: purpleView, duration: 1.0, options: transitionOptions, animations: {
+            UIView.transition(with: purpleView, duration: 0.3, options: transitionOptions, animations: {
                self.purpleView.isHidden = true
-
             })
             purple = true
 
@@ -225,10 +223,10 @@ class MainView: UIView {
         else{
             purple = false
 
-            UIView.transition(with: purpleView, duration: 1.0, options: transitionOptions, animations: {
+            UIView.transition(with: purpleView, duration: 0.3, options: transitionOptions, animations: {
                 self.purpleView.isHidden = true
             })
-            UIView.transition(with: greenView, duration: 1.0, options: transitionOptions, animations: {
+            UIView.transition(with: greenView, duration: 0.3, options: transitionOptions, animations: {
                 self.purpleView.isHidden = false
                 print("2")
 
