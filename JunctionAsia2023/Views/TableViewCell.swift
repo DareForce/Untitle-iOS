@@ -10,7 +10,7 @@ import UIKit
 class TableViewCell: UITableViewCell {
     static let identifier = "TableViewCell"
     public var img = UIImageView().then{
-        $0.image = UIImage(systemName: "xmark")
+        $0.backgroundColor = .systemGray4
         $0.contentMode = .scaleToFill
         $0.backgroundColor = .clear
         $0.layer.cornerRadius = 15

@@ -80,8 +80,7 @@ class MainView: UIView {
     }
     private let titleLabel = UILabel().then{
         $0.text = "Enjoy Your Meal!"
-        $0.textColor = .black
-        $0.font = UIFont.boldSystemFont(ofSize: 34)
+        $0.font = UIFont.systemFont(ofSize: 34, weight: .bold)
     }
     private let subtitleLabel = UILabel().then{
         $0.text = "This is your Food ID Card"

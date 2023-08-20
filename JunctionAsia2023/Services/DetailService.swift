@@ -21,8 +21,8 @@ struct MenuData: Codable {
     let price: Int
 }
 class DetailService{
-    func getAllBrand(restaurantId:Int,completion: @escaping (Result<MenuResponse, Error>) -> Void) {
-        let url = "http://13.125.216.62:8080/api/v1/restaurant/\(restaurantId)/menu"
+    func getAllBrand(restaurantId: Int ,completion: @escaping (Result<MenuResponse, Error>) -> Void) {
+        let url = "http://13.125.216.62:8080/api/v1/restaurant/\(restaurantId)/menu?userId=4"
         AF.request(url).responseDecodable(of: MenuResponse.self) { response in
             switch response.result {
             case .success(let brandList):
