@@ -92,7 +92,12 @@ extension DetailResViewController: UITableViewDelegate, UITableViewDataSource{
         if apidata[indexPath.row].ingredients.isEmpty {
             cell.titleLabel.text = ""
         } else {
-            cell.titleLabel.text = "⚠️ " + apidata[indexPath.row].ingredients[0]
+            let ingredients = apidata[indexPath.row].ingredients
+            
+            cell.titleLabel.text = "⚠️ "
+            ingredients.forEach {
+                cell.titleLabel.text! += "\($0) "
+            }
         }
         
         if let imageURL = URL(string: apidata[indexPath.row].thumbnail ){
