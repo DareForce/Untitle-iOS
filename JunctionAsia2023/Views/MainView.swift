@@ -73,9 +73,9 @@ class MainView: UIView {
         $0.backgroundColor = UIColor(hexString: "#CEF700")
         $0.layer.cornerRadius = 40
         $0.layer.masksToBounds = false
-        $0.layer.shadowColor = UIColor.lightGray.cgColor
+        $0.layer.shadowColor = UIColor.systemGray5.cgColor
         $0.layer.shadowOpacity = 0.8
-        $0.layer.shadowOffset = CGSize(width: 0, height: 10)
+        $0.layer.shadowOffset = CGSize(width: 0, height: 5)
         $0.layer.shadowRadius = 4
     }
     private let titleLabel = UILabel().then{
@@ -91,9 +91,9 @@ class MainView: UIView {
         $0.backgroundColor = UIColor(hexString: "#3E24FF")
         $0.layer.cornerRadius = 40
         $0.layer.masksToBounds = false
-        $0.layer.shadowColor = UIColor.lightGray.cgColor
+        $0.layer.shadowColor = UIColor.systemGray5.cgColor
         $0.layer.shadowOpacity = 0.8
-        $0.layer.shadowOffset = CGSize(width: 0, height: 10)
+        $0.layer.shadowOffset = CGSize(width: 0, height: 5)
         $0.layer.shadowRadius = 4
     }
     let purpleNameLabel = UILabel().then{
@@ -210,14 +210,12 @@ class MainView: UIView {
 
 
         if purple != true {
-
-            UIView.transition(with: greenView, duration: 1.0, options: transitionOptions, animations: {
-
+            UIView.transition(with: greenView, duration: 0.3, options: transitionOptions, animations: {
+                self.purpleView.isHidden = false
             })
 
-            UIView.transition(with: purpleView, duration: 1.0, options: transitionOptions, animations: {
+            UIView.transition(with: purpleView, duration: 0.3, options: transitionOptions, animations: {
                self.purpleView.isHidden = true
-
             })
             purple = true
 
@@ -225,10 +223,10 @@ class MainView: UIView {
         else{
             purple = false
 
-            UIView.transition(with: purpleView, duration: 1.0, options: transitionOptions, animations: {
+            UIView.transition(with: purpleView, duration: 0.3, options: transitionOptions, animations: {
                 self.purpleView.isHidden = true
             })
-            UIView.transition(with: greenView, duration: 1.0, options: transitionOptions, animations: {
+            UIView.transition(with: greenView, duration: 0.3, options: transitionOptions, animations: {
                 self.purpleView.isHidden = false
                 print("2")
 
