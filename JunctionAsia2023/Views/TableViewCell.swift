@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import SnapKit
 
 class TableViewCell: UITableViewCell {
     static let identifier = "TableViewCell"
+    
     public var img = UIImageView().then{
         $0.backgroundColor = .systemGray4
         $0.contentMode = .scaleToFill
@@ -68,15 +70,4 @@ class TableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

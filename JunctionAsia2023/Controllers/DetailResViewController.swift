@@ -87,7 +87,8 @@ extension DetailResViewController: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
         
         cell.resNameLabel.text = apidata[indexPath.row].name
-        cell.resNameLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        cell.resNameLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        
         if apidata[indexPath.row].ingredients.isEmpty {
             cell.titleLabel.text = ""
         } else {

@@ -84,8 +84,14 @@ extension DetailMenuViewController: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
         
         cell.resNameLabel.text = apidata[indexPath.row].name
-        cell.resNameLabel.font = UIFont.boldSystemFont(ofSize: 17)
-        cell.titleLabel.text = "⚠️ " + (apidata[indexPath.row].ingredients[0] ?? "")
+        cell.resNameLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        
+        if apidata[indexPath.row].ingredients.isEmpty {
+            cell.titleLabel.text = ""
+        } else {
+            cell.titleLabel.text = "⚠️ " + apidata[indexPath.row].ingredients[0]
+        }
+        
         if let imageURL = URL(string: apidata[indexPath.row].thumbnail) {
             cell.img.kf.setImage(with: imageURL)
         }
