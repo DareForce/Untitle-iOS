@@ -31,9 +31,7 @@ struct Keyword {
 }
 
 var mockData: [Keyword] = [
-    Keyword(string: "Crustacean Shellfish", type: .previewKeyword),
     Keyword(string: "Egg", type: .previewKeyword),
-    Keyword(string: "Fish", type: .previewKeyword),
     Keyword(string: "Milk", type: .previewKeyword),
     Keyword(string: "Peanut", type: .previewKeyword),
     Keyword(string: "Soy", type: .previewKeyword),
@@ -47,15 +45,17 @@ var mockData: [Keyword] = [
     Keyword(string: "Molluscan Shellfish", type: .previewKeyword),
     Keyword(string: "Mustard", type: .previewKeyword),
     Keyword(string: "Sesame", type: .previewKeyword),
-    Keyword(string: "Bee Pollen/Propolis", type: .previewKeyword),
+    Keyword(string: "Bee Pollen / Propolis", type: .previewKeyword),
     Keyword(string: "Beef", type: .previewKeyword),
     Keyword(string: "Chicken", type: .previewKeyword),
-    Keyword(string: "Latex(Natural Rubber)", type: .previewKeyword),
     Keyword(string: "Mango", type: .previewKeyword),
     Keyword(string: "Peach", type: .previewKeyword),
     Keyword(string: "Pork", type: .previewKeyword),
     Keyword(string: "Royal Jelly", type: .previewKeyword),
-    Keyword(string: "Tomato", type: .previewKeyword)
+    Keyword(string: "Tomato", type: .previewKeyword),
+    Keyword(string: "Latex(Natural Rubber)", type: .previewKeyword),
+    Keyword(string: "Crustacean Shellfish", type: .previewKeyword),
+    Keyword(string: "Fish", type: .previewKeyword)
 ]
 
 class UserDataViewController: BaseViewController {
