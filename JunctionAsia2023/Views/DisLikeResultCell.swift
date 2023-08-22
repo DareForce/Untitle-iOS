@@ -8,12 +8,17 @@
 import UIKit
 import SnapKit
 
+protocol DisLikeResultCellDelegate: AnyObject {
+    func didTapXButton(_ sender: UILabel)
+}
+
 class DisLikeResultCell: UICollectionViewCell {
 
     // MARK: - Property
     
     static let identifier = "disLikeResultCell"
-
+    weak var delegate: DisLikeResultCellDelegate?
+    
     // MARK: - View
     
     let containerView: UIStackView = {
@@ -41,6 +46,9 @@ class DisLikeResultCell: UICollectionViewCell {
         super.init(frame: frame)
         
         layout()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapXButton))
+        addGestureRecognizer(tapGesture)
     }
     
     required init?(coder: NSCoder) {
@@ -81,5 +89,8 @@ class DisLikeResultCell: UICollectionViewCell {
         let targetSize = CGSize(width: UIView.layoutFittingCompressedSize.width, height: availableHeight)
         return cell.contentView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: .fittingSizeLevel, verticalFittingPriority: .required)
     }
-
+    
+    @objc func didTapXButton() {
+        delegate?.didTapXButton(disLikeLabel)
+    }
 }
