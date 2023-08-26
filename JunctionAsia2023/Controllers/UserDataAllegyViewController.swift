@@ -30,46 +30,20 @@ struct Keyword {
     }
 }
 
-var mockData: [Keyword] = [
-    Keyword(string: "Egg", type: .previewKeyword),
-    Keyword(string: "Milk", type: .previewKeyword),
-    Keyword(string: "Peanut", type: .previewKeyword),
-    Keyword(string: "Soy", type: .previewKeyword),
-    Keyword(string: "Tree Nuts", type: .previewKeyword),
-    Keyword(string: "Wheat", type: .previewKeyword),
-    Keyword(string: "Cereals w/ Gluten", type: .previewKeyword),
-    Keyword(string: "Sulfites", type: .previewKeyword),
-    Keyword(string: "Buckwheat", type: .previewKeyword),
-    Keyword(string: "Celery", type: .previewKeyword),
-    Keyword(string: "Lupin", type: .previewKeyword),
-    Keyword(string: "Molluscan Shellfish", type: .previewKeyword),
-    Keyword(string: "Mustard", type: .previewKeyword),
-    Keyword(string: "Sesame", type: .previewKeyword),
-    Keyword(string: "Bee Pollen / Propolis", type: .previewKeyword),
-    Keyword(string: "Beef", type: .previewKeyword),
-    Keyword(string: "Chicken", type: .previewKeyword),
-    Keyword(string: "Mango", type: .previewKeyword),
-    Keyword(string: "Peach", type: .previewKeyword),
-    Keyword(string: "Pork", type: .previewKeyword),
-    Keyword(string: "Royal Jelly", type: .previewKeyword),
-    Keyword(string: "Tomato", type: .previewKeyword),
-    Keyword(string: "Latex(Natural Rubber)", type: .previewKeyword),
-    Keyword(string: "Crustacean Shellfish", type: .previewKeyword),
-    Keyword(string: "Fish", type: .previewKeyword)
-]
-
-class UserDataViewController: BaseViewController {
+final class UserDataAllegyViewController: BaseViewController {
 
     // MARK: - Property
     
-    static var allergyType = mockData
+    static var allergyType = allergyComponents
     var userName: String?
-    var allergyDatum = [String]() {
+    private var allergyDatum = [Int: String]() {
         didSet {
             if allergyDatum.count > 0 {
+                nextButton.isEnabled = true
                 nextButton.setTitleColor(.white, for: .normal)
                 nextButton.backgroundColor = UIColor(hexString: "#3E24FF")
             } else {
+                nextButton.isEnabled = false
                 nextButton.setTitleColor(UIColor(hexString: "#3E24FF"), for: .normal)
                 nextButton.backgroundColor = UIColor(hexString: "#E6E2FF")
             }
@@ -78,14 +52,14 @@ class UserDataViewController: BaseViewController {
     
     // MARK: - View
     
-    let titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         $0.text = "Allergies Info"
         $0.font = UIFont.systemFont(ofSize: 34, weight: .bold)
         $0.textAlignment = .left
         return $0
     }(UILabel())
     
-    let descriptionLabel: UILabel = {
+    private let descriptionLabel: UILabel = {
         $0.text = "Please select all allergies you have"
         $0.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         $0.textColor = .secondaryLabel
@@ -93,9 +67,9 @@ class UserDataViewController: BaseViewController {
         return $0
     }(UILabel())
     
-    var allergyDataCollectionView: UICollectionView!
+    private var allergyDataCollectionView = DynamicCollectionView()
     
-    let nextButton: UIButton = {
+    private let nextButton: UIButton = {
         $0.setTitle("Next", for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         $0.setTitleColor(UIColor(hexString: "#3E24FF"), for: .normal)
@@ -115,49 +89,48 @@ class UserDataViewController: BaseViewController {
         super.viewDidLoad()
     }
     
-    // MARK: - Method
-    
-    func setupCollectionView() {
-        allergyDataCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UserDataCollectionViewLayout.init())
-    }
-    
+    // MARK: - Layout
+
     override func layout() {
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.horizontalEdges.equalTo(16)
+            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
         }
         
         view.addSubview(descriptionLabel)
         descriptionLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(8)
-            $0.horizontalEdges.equalToSuperview().offset(16)
+            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).offset(16)
         }
         
         view.addSubview(nextButton)
         nextButton.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview().inset(16)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(14)
+            $0.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
             $0.height.equalTo(50)
         }
         
         view.addSubview(allergyDataCollectionView)
         allergyDataCollectionView.snp.makeConstraints {
             $0.top.equalTo(descriptionLabel.snp.bottom).offset(30)
-            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
             $0.bottom.equalTo(nextButton.snp.top)
         }
     }
     
+    // MARK: - Configure
+    
     override func configure() {
+        setupCollectionView()
+    }
+    
+    private func setupCollectionView() {
         allergyDataCollectionView.delegate = self
         allergyDataCollectionView.dataSource = self
         allergyDataCollectionView.register(UserDataCell.self, forCellWithReuseIdentifier: UserDataCell.identifier)
-        allergyDataCollectionView.showsVerticalScrollIndicator = false
-        allergyDataCollectionView.allowsMultipleSelection = true
-        
-        nextButton.isEnabled = false
     }
+    
+    // MARK: - Method
     
     @objc func moveToDisLikeViewController() {
         let dislikeViewCongtroller = UserDataDislikeViewController()
@@ -167,15 +140,17 @@ class UserDataViewController: BaseViewController {
     }
 }
 
-extension UserDataViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+// MARK: - UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
+
+extension UserDataAllegyViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return UserDataViewController.allergyType.count
+        return UserDataAllegyViewController.allergyType.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserDataCell.identifier, for: indexPath) as! UserDataCell
-        let labelText = UserDataViewController.allergyType[indexPath.row].string
-        let labelType = UserDataViewController.allergyType[indexPath.row].type
+        let labelText = UserDataAllegyViewController.allergyType[indexPath.row].string
+        let labelType = UserDataAllegyViewController.allergyType[indexPath.row].type
 
         cell.allergyLabel.text = labelText
         cell.configureLabel(labelType)
@@ -184,14 +159,18 @@ extension UserDataViewController: UICollectionViewDataSource, UICollectionViewDe
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let labelText = UserDataViewController.allergyType[indexPath.row].string
+        let labelText = UserDataAllegyViewController.allergyType[indexPath.row].string
 
         return UserDataCell.fittingSize(availableHeight: 45, labelText)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        nextButton.isEnabled = true
-        allergyDatum.append(UserDataViewController.allergyType[indexPath.row].string)
+        let allergyName = UserDataAllegyViewController.allergyType[indexPath.row].string
+        allergyDatum[indexPath.row] = allergyName
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        allergyDatum[indexPath.row] = nil
     }
 }
 
