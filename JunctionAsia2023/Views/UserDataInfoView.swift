@@ -10,8 +10,6 @@ import UIKit
 import SnapKit
 
 protocol UserDataInfoViewDelegate: AnyObject {
-    func manBtnClick(_ userDataInfoView: UserDataInfoView)
-    func womenBtnClick(_ userDataInfoView: UserDataInfoView)
     func nextBtnClick(_ userDataInfoView: UserDataInfoView)
 }
 

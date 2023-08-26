@@ -12,12 +12,12 @@ class UserDataInfoViewController: BaseViewController {
     
     // MARK: - View
     
-    private let welecomeView: UserDataInfoView = UserDataInfoView(frame: .zero)
+    private let userDataInfoView = UserDataInfoView()
     
     // MARK: - Lauout
     
     override func layout() {
-        self.welecomeView.snp.makeConstraints {
+        self.userDataInfoView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
@@ -25,8 +25,8 @@ class UserDataInfoViewController: BaseViewController {
     // MARK: - Configure
     
     override func configure() {
-        self.view.addSubview(welecomeView)
-        self.welecomeView.delegate = self
+        self.view.addSubview(userDataInfoView)
+        self.userDataInfoView.delegate = self
         
         navigationController?.navigationBar.topItem?.title = ""
     }
@@ -35,16 +35,9 @@ class UserDataInfoViewController: BaseViewController {
 // MARK: - WelecomeViewDelegate
 
 extension UserDataInfoViewController: UserDataInfoViewDelegate {
-    func nextBtnClick(_ welecomView: UserDataInfoView) {
+    func nextBtnClick(_ userDataInfoView: UserDataInfoView) {
         let userDataAllegyViewController = UserDataAllegyViewController()
-        userDataAllegyViewController.userName = self.welecomeView.nameTextField.text
+        userDataAllegyViewController.userName = self.userDataInfoView.nameTextField.text
         navigationController?.pushViewController(userDataAllegyViewController, animated: true)
-    }
-    func manBtnClick(_ welecomView: UserDataInfoView) {
-        
-    }
-    
-    func womenBtnClick(_ welecomView: UserDataInfoView) {
-        
     }
 }
