@@ -10,16 +10,21 @@ import UIKit
 import SnapKit
 import Then
 
-protocol WelecomeViewDelegate: AnyObject {
-    func manBtnClick(_ welecomView: WelecomeView)
-    func womenBtnClick(_ welecomView: WelecomeView)
-    func nextBtnClick(_ welecomView: WelecomeView)
+protocol UserDataInfoViewDelegate: AnyObject {
+    func manBtnClick(_ userDataInfoView: UserDataInfoView)
+    func womenBtnClick(_ userDataInfoView: UserDataInfoView)
+    func nextBtnClick(_ userDataInfoView: UserDataInfoView)
 }
 
-class WelecomeView: UIView {
+class UserDataInfoView: UIView {
+    
+    // MARK: - Property
+    
     private var selectedButtonTitleColor: UIColor? // 선택된 버튼의 타이틀 컬러를 추적하는 변수
     private var selectedButtonTitle: String? // 선택된 버튼의 타이틀을 추적하는 변수
-    weak var delegate: WelecomeViewDelegate?
+    weak var delegate: UserDataInfoViewDelegate?
+    
+    // MARK: - View
     
     private let hStackView: UIStackView = {
         $0.axis = .horizontal
@@ -94,66 +99,84 @@ class WelecomeView: UIView {
         $0.textColor =  UIColor(hexString: "#3C3C43", alpha: 0.6)
         $0.font = UIFont.systemFont(ofSize: 17)
     }
-    private func layout() {
-        
-        self.nextBtn.snp.makeConstraints{
-            $0.bottom.equalTo(safeAreaLayoutGuide).inset(16)
-            $0.leading.equalTo(safeAreaLayoutGuide).offset(16)
-            $0.trailing.equalTo(safeAreaLayoutGuide).offset(-16)
-            $0.height.equalTo(50)
-        }
-        
-        self.hStackView.snp.makeConstraints {
-            $0.height.equalTo(50)
-            $0.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(16)
-            $0.top.equalTo(sexLabel.snp.bottom).offset(5)
-        }
-        self.sexLabel.snp.makeConstraints {
-            $0.top.equalTo(ageTextField.snp.bottom).offset(20)
-            $0.leading.equalToSuperview().offset(28)
-        }
-        self.ageTextField.snp.makeConstraints{
-            $0.top.equalTo(ageLabel.snp.bottom).offset(5)
-            $0.leading.equalToSuperview().offset(16)
-            $0.trailing.equalToSuperview().offset(-16)
-            $0.height.equalTo(50)
-        }
-        self.ageLabel.snp.makeConstraints{
-            $0.top.equalTo(nameTextField.snp.bottom).offset(20)
-            $0.leading.equalToSuperview().offset(28)
-        }
-        self.nameTextField.snp.makeConstraints{
-            $0.top.equalTo(nameLabel.snp.bottom).offset(5)
-            $0.leading.equalToSuperview().offset(16)
-            $0.trailing.equalToSuperview().offset(-16)
-            $0.height.equalTo(50)
-        }
-        self.nameLabel.snp.makeConstraints{
-            $0.top.equalTo(subtitleLabel.snp.bottom).offset(30)
-            $0.leading.equalToSuperview().offset(28)
-        }
-        self.subtitleLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(8)
-            $0.leading.equalToSuperview().offset(16)
-        }
-        self.titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.equalToSuperview().offset(16)
-        }
+    
+    // MARK: - Init
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.configure()
+        self.layout()
     }
-    private func addsubview() {
-        self.addSubview(subtitleLabel)
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Layout
+    
+    private func layout() {
         self.addSubview(titleLabel)
-        self.addSubview(nameTextField)
+        titleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(40)
+            $0.horizontalEdges.equalToSuperview().inset(16)
+        }
+        
+        self.addSubview(subtitleLabel)
+        subtitleLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(8)
+            $0.horizontalEdges.equalToSuperview().inset(16)
+        }
+        
         self.addSubview(nameLabel)
+        nameLabel.snp.makeConstraints {
+            $0.top.equalTo(subtitleLabel.snp.bottom).offset(30)
+            $0.horizontalEdges.equalToSuperview().inset(28)
+        }
+        
+        self.addSubview(nameTextField)
+        nameTextField.snp.makeConstraints {
+            $0.top.equalTo(nameLabel.snp.bottom).offset(5)
+            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.height.equalTo(50)
+        }
+        
         self.addSubview(ageLabel)
+        ageLabel.snp.makeConstraints {
+            $0.top.equalTo(nameTextField.snp.bottom).offset(20)
+            $0.horizontalEdges.equalToSuperview().inset(28)
+        }
+        
         self.addSubview(ageTextField)
+        ageTextField.snp.makeConstraints {
+            $0.top.equalTo(ageLabel.snp.bottom).offset(5)
+            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.height.equalTo(50)
+        }
+        
         self.addSubview(sexLabel)
+        sexLabel.snp.makeConstraints {
+            $0.top.equalTo(ageTextField.snp.bottom).offset(20)
+            $0.horizontalEdges.equalToSuperview().inset(28)
+        }
+        
         self.addSubview(hStackView)
         hStackView.addArrangedSubview(manBtn)
         hStackView.addArrangedSubview(womenBtn)
+        
+        hStackView.snp.makeConstraints {
+            $0.top.equalTo(sexLabel.snp.bottom).offset(5)
+            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.height.equalTo(50)
+        }
+        
         self.addSubview(nextBtn)
+        nextBtn.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview().offset(-14)
+            $0.height.equalTo(50)
+        }
     }
+
     private func configure() {
         self.womenBtn.addTarget(self, action: #selector(womenBtnClick), for: .touchUpInside)
         self.manBtn.addTarget(self, action: #selector(manBtnClick), for: .touchUpInside)
@@ -161,12 +184,14 @@ class WelecomeView: UIView {
         self.ageTextField.delegate = self
         self.nameTextField.delegate = self
     }
+    
     private func updateButtonColors() {
         manBtn.backgroundColor = (selectedButtonTitle == "Man") ? UIColor(hexString: "#3E24FF") : UIColor(hexString: "#F0F0F0")
         womenBtn.backgroundColor = (selectedButtonTitle == "Women") ? UIColor(hexString: "#3E24FF") : UIColor(hexString: "#F0F0F0")
         manBtn.setTitleColor((selectedButtonTitle == "Man") ? selectedButtonTitleColor : UIColor(hexString: "#3C3C43", alpha: 0.6), for: .normal)
             womenBtn.setTitleColor((selectedButtonTitle == "Women") ? selectedButtonTitleColor : UIColor(hexString: "#3C3C43", alpha: 0.6), for: .normal)
     }
+    
     private func updateButtonState(enabled: Bool) {
         if enabled {
             nextBtn.isEnabled = true
@@ -178,23 +203,15 @@ class WelecomeView: UIView {
             nextBtn.backgroundColor = UIColor(hexString: "#E6E2FF")
         }
     }
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.configure()
-        self.addsubview()
-        self.layout()
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
-extension WelecomeView {
+extension UserDataInfoView {
     @objc func nextBtnClick() {
         delegate?.nextBtnClick(self)
 
     }
     @objc func manBtnClick() {
         delegate?.manBtnClick(self)
+        
         if nameTextField.text != "" && ageTextField.text != ""
         {
             selectedButtonTitle = "Man"
@@ -205,6 +222,7 @@ extension WelecomeView {
     }
     @objc func womenBtnClick() {
         delegate?.womenBtnClick(self)
+        
         if nameTextField.text != "" && ageTextField.text != ""
         {
             selectedButtonTitle = "Women"
@@ -214,7 +232,7 @@ extension WelecomeView {
         }
     }
 }
-extension WelecomeView: UITextFieldDelegate {
+extension UserDataInfoView: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if !nameTextField.text!.isEmpty && !ageTextField.text!.isEmpty{
             updateButtonState(enabled: true) // 텍스트가 입력되었을 때 버튼 활성화
