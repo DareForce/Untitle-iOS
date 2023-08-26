@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 import SnapKit
-import Then
 
 protocol UserDataInfoViewDelegate: AnyObject {
     func manBtnClick(_ userDataInfoView: UserDataInfoView)
@@ -16,15 +15,81 @@ protocol UserDataInfoViewDelegate: AnyObject {
     func nextBtnClick(_ userDataInfoView: UserDataInfoView)
 }
 
-class UserDataInfoView: UIView {
+final class UserDataInfoView: UIView {
     
     // MARK: - Property
     
-    private var selectedButtonTitleColor: UIColor? // 선택된 버튼의 타이틀 컬러를 추적하는 변수
-    private var selectedButtonTitle: String? // 선택된 버튼의 타이틀을 추적하는 변수
     weak var delegate: UserDataInfoViewDelegate?
+    private var userDataInfo: (name: String, age: String, sex: String) = ("", "", "") {
+        didSet {
+            if !userDataInfo.age.isEmpty && !userDataInfo.age.isEmpty && !userDataInfo.sex.isEmpty {
+                nextBtn.isEnabled = true
+                nextBtn.backgroundColor = .mainBlueColor
+            } else {
+                nextBtn.isEnabled = false
+                nextBtn.backgroundColor = .disabledButtonColor
+            }
+        }
+    }
     
     // MARK: - View
+    
+    private let titleLabel: UILabel = {
+        $0.text = "Hello!"
+        $0.textColor = .black
+        $0.font = UIFont.boldSystemFont(ofSize: 34)
+        return $0
+    }(UILabel())
+    
+    private let subtitleLabel: UILabel = {
+        $0.text = "Enter your credentials to continue"
+        $0.textColor =  UIColor(hexString: "#3C3C43", alpha: 0.6)
+        $0.font = UIFont.systemFont(ofSize: 17)
+        return $0
+    }(UILabel())
+    
+    private let nameLabel: UILabel = {
+        $0.text = "Name"
+        $0.textColor = UIColor(hexString: "#3C3C43", alpha: 0.6)
+        $0.font = UIFont.systemFont(ofSize: 13)
+        return $0
+    }(UILabel())
+    
+    let nameTextField: UITextField = {
+        $0.setLeftPaddingPoints(12)
+        $0.font = UIFont.systemFont(ofSize: 17)
+        $0.backgroundColor = UIColor(hexString: "#F0F0F0")
+        $0.layer.cornerRadius = 15
+        $0.layer.masksToBounds = true
+        $0.autocorrectionType = .no
+        $0.spellCheckingType = .yes
+        $0.autocapitalizationType = .none
+        return $0
+    }(UITextField())
+    
+    private let ageLabel: UILabel = {
+        $0.text = "Age"
+        $0.textColor = UIColor(hexString: "#3C3C43", alpha: 0.6)
+        $0.font = UIFont.systemFont(ofSize: 13)
+        return $0
+    }(UILabel())
+    
+    private let ageTextField: UITextField = {
+        $0.setLeftPaddingPoints(12)
+        $0.font = UIFont.systemFont(ofSize: 17)
+        $0.backgroundColor = UIColor(hexString: "#F0F0F0")
+        $0.layer.cornerRadius = 15
+        $0.layer.masksToBounds = true
+        $0.keyboardType = .numberPad
+        return $0
+    }(UITextField())
+    
+    private let sexLabel: UILabel = {
+        $0.text = "Sex"
+        $0.textColor = UIColor(hexString: "#3C3C43", alpha: 0.6)
+        $0.font = UIFont.systemFont(ofSize: 13)
+        return $0
+    }(UILabel())
     
     private let hStackView: UIStackView = {
         $0.axis = .horizontal
@@ -33,77 +98,46 @@ class UserDataInfoView: UIView {
         return $0
     }(UIStackView())
     
-    private let nextBtn = UIButton().then{
+    private let maleButton: UIButton = {
+        $0.setTitle("Male", for: .normal)
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        $0.setTitleColor(.unselectedButtonTitleColor, for: .normal)
+        $0.backgroundColor = .unselectedButtonBackgroundColor
+        $0.addTarget(self, action: #selector(pressedGenderButton), for: .touchUpInside)
+        $0.layer.cornerRadius = 15
+        $0.layer.masksToBounds = true
+        return $0
+    }(UIButton())
+    
+    private let femaleButton: UIButton = {
+        $0.setTitle("Female", for: .normal)
+        $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        $0.setTitleColor(.unselectedButtonTitleColor, for: .normal)
+        $0.backgroundColor = .unselectedButtonBackgroundColor
+        $0.addTarget(self, action: #selector(pressedGenderButton), for: .touchUpInside)
+        $0.layer.cornerRadius = 15
+        $0.layer.masksToBounds = true
+        return $0
+    }(UIButton())
+    
+    private let nextBtn: UIButton = {
         $0.setTitle("Next", for: .normal)
         $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
-        $0.setTitleColor(UIColor(hexString: "#3E24FF"), for: .normal)
+        $0.setTitleColor(.selectedButtonTitleColor, for: .normal)
+        $0.setTitleColor(.mainBlueColor, for: .disabled)
         $0.backgroundColor = UIColor(hexString: "#E6E2FF")
+        $0.addTarget(self, action: #selector(pressedNextButton), for: .touchUpInside)
         $0.layer.cornerRadius = 15
         $0.layer.masksToBounds = true
         $0.isEnabled = false
-    }
-    private let womenBtn = UIButton().then{
-        $0.setTitle("Female", for: .normal)
-        $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
-        $0.setTitleColor(UIColor(hexString: "#3C3C43", alpha: 0.6), for: .normal)
-        $0.backgroundColor = UIColor(hexString: "#F0F0F0")
-        $0.layer.cornerRadius = 15
-        $0.layer.masksToBounds = true
-    }
-    private let manBtn = UIButton().then{
-        $0.setTitle("Male", for: .normal)
-        $0.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
-        $0.setTitleColor(UIColor(hexString: "#3C3C43", alpha: 0.6), for: .normal)
-        $0.backgroundColor = UIColor(hexString: "#F0F0F0")
-        $0.layer.cornerRadius = 15
-        $0.layer.masksToBounds = true
-    }
-    private let sexLabel = UILabel().then{
-        $0.text = "Sex"
-        $0.textColor =  UIColor(hexString: "#3C3C43")
-        $0.font = UIFont.systemFont(ofSize: 13)
-    }
-    private let ageTextField = UITextField().then{
-        $0.setLeftPaddingPoints(12)
-        $0.backgroundColor = UIColor(hexString: "#F0F0F0")
-        $0.layer.cornerRadius = 15
-        $0.layer.masksToBounds = true
-        $0.keyboardType = .numberPad
-    }
-    private let ageLabel = UILabel().then{
-        $0.text = "Age"
-        $0.textColor =  UIColor(hexString: "#3C3C43")
-        $0.font = UIFont.systemFont(ofSize: 13)
-    }
-    let nameTextField = UITextField().then{
-        $0.setLeftPaddingPoints(12)
-        $0.backgroundColor = UIColor(hexString: "#F0F0F0")
-        $0.layer.cornerRadius = 15
-        $0.layer.masksToBounds = true
-        $0.autocorrectionType = .no
-        $0.spellCheckingType = .yes
-        $0.autocapitalizationType = .none
-    }
-    private let nameLabel = UILabel().then{
-        $0.text = "Name"
-        $0.textColor =  UIColor(hexString: "#3C3C43")
-        $0.font = UIFont.systemFont(ofSize: 13)
-    }
-    private let titleLabel = UILabel().then{
-        $0.text = "Hello!"
-        $0.textColor = .black
-        $0.font = UIFont.boldSystemFont(ofSize: 34)
-    }
-    private let subtitleLabel = UILabel().then{
-        $0.text = "Enter your credentials to continue"
-        $0.textColor =  UIColor(hexString: "#3C3C43", alpha: 0.6)
-        $0.font = UIFont.systemFont(ofSize: 17)
-    }
+        return $0
+    }(UIButton())
     
     // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         self.configure()
         self.layout()
     }
@@ -160,8 +194,8 @@ class UserDataInfoView: UIView {
         }
         
         self.addSubview(hStackView)
-        hStackView.addArrangedSubview(manBtn)
-        hStackView.addArrangedSubview(womenBtn)
+        hStackView.addArrangedSubview(maleButton)
+        hStackView.addArrangedSubview(femaleButton)
         
         hStackView.snp.makeConstraints {
             $0.top.equalTo(sexLabel.snp.bottom).offset(5)
@@ -177,68 +211,42 @@ class UserDataInfoView: UIView {
         }
     }
 
+    // MARK: - Configure
+    
     private func configure() {
-        self.womenBtn.addTarget(self, action: #selector(womenBtnClick), for: .touchUpInside)
-        self.manBtn.addTarget(self, action: #selector(manBtnClick), for: .touchUpInside)
-        self.nextBtn.addTarget(self, action: #selector(nextBtnClick), for: .touchUpInside)
         self.ageTextField.delegate = self
         self.nameTextField.delegate = self
     }
     
-    private func updateButtonColors() {
-        manBtn.backgroundColor = (selectedButtonTitle == "Man") ? UIColor(hexString: "#3E24FF") : UIColor(hexString: "#F0F0F0")
-        womenBtn.backgroundColor = (selectedButtonTitle == "Women") ? UIColor(hexString: "#3E24FF") : UIColor(hexString: "#F0F0F0")
-        manBtn.setTitleColor((selectedButtonTitle == "Man") ? selectedButtonTitleColor : UIColor(hexString: "#3C3C43", alpha: 0.6), for: .normal)
-            womenBtn.setTitleColor((selectedButtonTitle == "Women") ? selectedButtonTitleColor : UIColor(hexString: "#3C3C43", alpha: 0.6), for: .normal)
+    // MARK: - pressedButton
+    
+    @objc func pressedNextButton() {
+        delegate?.nextBtnClick(self)
     }
     
-    private func updateButtonState(enabled: Bool) {
-        if enabled {
-            nextBtn.isEnabled = true
-            nextBtn.setTitleColor(UIColor(hexString: "#FFFFFF"), for: .normal)
-            nextBtn.backgroundColor = UIColor(hexString: "#3E24FF")
+    @objc func pressedGenderButton(_ sender: UIButton) {
+        sender.backgroundColor = .mainBlueColor
+        sender.setTitleColor(.selectedButtonTitleColor, for: .normal)
+        userDataInfo.sex = sender.currentTitle ?? "Male"
+        
+        if sender.currentTitle == "Male" {
+            femaleButton.backgroundColor = .unselectedButtonBackgroundColor
+            femaleButton.setTitleColor(.unselectedButtonTitleColor, for: .normal)
         } else {
-            nextBtn.isEnabled = false
-            nextBtn.setTitleColor(UIColor(hexString: "#3E24FF"), for: .normal)
-            nextBtn.backgroundColor = UIColor(hexString: "#E6E2FF")
+            maleButton.backgroundColor = .unselectedButtonBackgroundColor
+            maleButton.setTitleColor(.unselectedButtonTitleColor, for: .normal)
         }
     }
 }
-extension UserDataInfoView {
-    @objc func nextBtnClick() {
-        delegate?.nextBtnClick(self)
 
-    }
-    @objc func manBtnClick() {
-        delegate?.manBtnClick(self)
-        
-        if nameTextField.text != "" && ageTextField.text != ""
-        {
-            selectedButtonTitle = "Man"
-            selectedButtonTitleColor = UIColor(hexString: "#FFFFFF") // 선택된 버튼 타이틀 컬러 변경
-            updateButtonColors()
-            self.updateButtonState(enabled: true)
-        }
-    }
-    @objc func womenBtnClick() {
-        delegate?.womenBtnClick(self)
-        
-        if nameTextField.text != "" && ageTextField.text != ""
-        {
-            selectedButtonTitle = "Women"
-            selectedButtonTitleColor = UIColor(hexString: "#FFFFFF") // 선택된 버튼 타이틀 컬러 변경
-            updateButtonColors()
-            self.updateButtonState(enabled: true)
-        }
-    }
-}
+// MARK: - UITextFieldDelegate
+
 extension UserDataInfoView: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        if !nameTextField.text!.isEmpty && !ageTextField.text!.isEmpty{
-            updateButtonState(enabled: true) // 텍스트가 입력되었을 때 버튼 활성화
-        }
-        else{
-            updateButtonState(enabled: false) // 텍스트가 없으면 버튼 비활성화
+        if textField == nameTextField {
+            userDataInfo.name = textField.text ?? "사용자"
+        } else {
+            userDataInfo.age = textField.text ?? "0"
         }
     }
 }
