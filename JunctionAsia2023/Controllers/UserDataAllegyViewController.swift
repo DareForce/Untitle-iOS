@@ -40,12 +40,10 @@ final class UserDataAllegyViewController: BaseViewController {
         didSet {
             if allergyDatum.count > 0 {
                 nextButton.isEnabled = true
-                nextButton.setTitleColor(.white, for: .normal)
-                nextButton.backgroundColor = UIColor(hexString: "#3E24FF")
+                nextButton.backgroundColor = .mainBlueColor
             } else {
                 nextButton.isEnabled = false
-                nextButton.setTitleColor(UIColor(hexString: "#3E24FF"), for: .normal)
-                nextButton.backgroundColor = UIColor(hexString: "#E6E2FF")
+                nextButton.backgroundColor = .disabledButtonColor
             }
         }
     }
@@ -72,8 +70,9 @@ final class UserDataAllegyViewController: BaseViewController {
     private let nextButton: UIButton = {
         $0.setTitle("Next", for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
-        $0.setTitleColor(UIColor(hexString: "#3E24FF"), for: .normal)
-        $0.backgroundColor = UIColor(hexString: "#E6E2FF")
+        $0.setTitleColor(.white, for: .normal)
+        $0.setTitleColor(.mainBlueColor, for: .disabled)
+        $0.backgroundColor = .disabledButtonColor
         $0.layer.cornerRadius = 15
         $0.layer.masksToBounds = true
         $0.isEnabled = false
