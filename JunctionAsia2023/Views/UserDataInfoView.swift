@@ -149,7 +149,7 @@ final class UserDataInfoView: UIView {
     private func layout() {
         self.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(40)
+            $0.top.equalToSuperview()
             $0.horizontalEdges.equalToSuperview().inset(16)
         }
         

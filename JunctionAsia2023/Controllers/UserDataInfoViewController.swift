@@ -17,6 +17,7 @@ class UserDataInfoViewController: BaseViewController {
     // MARK: - Lauout
     
     override func layout() {
+        self.view.addSubview(userDataInfoView)
         self.userDataInfoView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
@@ -25,7 +26,6 @@ class UserDataInfoViewController: BaseViewController {
     // MARK: - Configure
     
     override func configure() {
-        self.view.addSubview(userDataInfoView)
         self.userDataInfoView.delegate = self
         
         navigationController?.navigationBar.topItem?.title = ""
