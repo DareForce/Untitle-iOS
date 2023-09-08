@@ -1,5 +1,5 @@
 //
-//  UserDataCell.swift
+//  UserDataAllergyCell.swift
 //  JunctionAsia2023
 //
 //  Created by 지준용 on 2023/08/19.
@@ -16,7 +16,7 @@ enum Size {
     static let keywordLabelXInset: CGFloat = 10
 }
 
-class UserDataCell: UICollectionViewCell {
+final class UserDataAllergyCell: UICollectionViewCell {
     
     // MARK: - Property
     
@@ -38,7 +38,15 @@ class UserDataCell: UICollectionViewCell {
 
     // MARK: - View
     
-    let allergyLabel = UILabel()
+    let allergyLabel: UILabel = {
+        $0.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        $0.textColor = .black
+        $0.backgroundColor = .systemGray5
+        $0.textAlignment = .center
+        $0.layer.cornerRadius = Size.keywordLabelHeight / 2
+        $0.layer.masksToBounds = true
+        return $0
+    }(UILabel())
     
     // MARK: - Init
     
@@ -67,19 +75,18 @@ class UserDataCell: UICollectionViewCell {
     }
     
     func configureLabel(_ type: KeywordType) {
-        allergyLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        allergyLabel.textColor = .black
-        allergyLabel.backgroundColor = .systemGray5
-        allergyLabel.textAlignment = .center
-        allergyLabel.layer.cornerRadius = Size.keywordLabelHeight / 2
-        allergyLabel.layer.masksToBounds = true
         allergyLabel.layer.maskedCorners = type.maskedCorners
     }
     
     static func fittingSize(availableHeight: CGFloat, _ allergyType: String) -> CGSize {
-        let cell = UserDataCell()
+        let cell = UserDataAllergyCell()
         cell.configureText(allergyType)
-        let targetSize = CGSize(width: UIView.layoutFittingCompressedSize.width, height: availableHeight)
-        return cell.contentView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: .fittingSizeLevel, verticalFittingPriority: .required)
+        
+        let targetSize = CGSize(width: UIView.layoutFittingCompressedSize.width,
+                                height: availableHeight)
+        
+        return cell.contentView.systemLayoutSizeFitting(targetSize,
+                                                        withHorizontalFittingPriority: .fittingSizeLevel,
+                                                        verticalFittingPriority: .required)
     }
 }

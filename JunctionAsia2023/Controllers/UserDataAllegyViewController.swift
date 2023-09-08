@@ -126,7 +126,7 @@ final class UserDataAllegyViewController: BaseViewController {
     private func setupCollectionView() {
         allergyDataCollectionView.delegate = self
         allergyDataCollectionView.dataSource = self
-        allergyDataCollectionView.register(UserDataCell.self, forCellWithReuseIdentifier: UserDataCell.identifier)
+        allergyDataCollectionView.register(UserDataAllergyCell.self, forCellWithReuseIdentifier: UserDataAllergyCell.identifier)
     }
     
     // MARK: - Method
@@ -147,7 +147,7 @@ extension UserDataAllegyViewController: UICollectionViewDataSource, UICollection
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserDataCell.identifier, for: indexPath) as! UserDataCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserDataAllergyCell.identifier, for: indexPath) as! UserDataAllergyCell
         let labelText = UserDataAllegyViewController.allergyType[indexPath.row].string
         let labelType = UserDataAllegyViewController.allergyType[indexPath.row].type
 
@@ -160,7 +160,7 @@ extension UserDataAllegyViewController: UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let labelText = UserDataAllegyViewController.allergyType[indexPath.row].string
 
-        return UserDataCell.fittingSize(availableHeight: 45, labelText)
+        return UserDataAllergyCell.fittingSize(availableHeight: 45, labelText)
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
