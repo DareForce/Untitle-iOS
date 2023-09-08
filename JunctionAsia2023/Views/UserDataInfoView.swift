@@ -20,7 +20,7 @@ final class UserDataInfoView: UIView {
     weak var delegate: UserDataInfoViewDelegate?
     private var userDataInfo: (name: String, age: String, sex: String) = ("", "", "") {
         didSet {
-            if !userDataInfo.age.isEmpty && !userDataInfo.age.isEmpty && !userDataInfo.sex.isEmpty {
+            if !userDataInfo.name.isEmpty && !userDataInfo.age.isEmpty && !userDataInfo.sex.isEmpty {
                 nextBtn.isEnabled = true
                 nextBtn.backgroundColor = .mainBlueColor
             } else {
