@@ -101,7 +101,7 @@ final class UserDataInfoView: UIView {
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         $0.setTitleColor(.unselectedButtonTitleColor, for: .normal)
         $0.backgroundColor = .unselectedButtonBackgroundColor
-        $0.addTarget(self, action: #selector(pressedGenderButton), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(pressedSexButton), for: .touchUpInside)
         $0.layer.cornerRadius = 15
         $0.layer.masksToBounds = true
         return $0
@@ -112,7 +112,7 @@ final class UserDataInfoView: UIView {
         $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         $0.setTitleColor(.unselectedButtonTitleColor, for: .normal)
         $0.backgroundColor = .unselectedButtonBackgroundColor
-        $0.addTarget(self, action: #selector(pressedGenderButton), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(pressedSexButton), for: .touchUpInside)
         $0.layer.cornerRadius = 15
         $0.layer.masksToBounds = true
         return $0
@@ -222,7 +222,7 @@ final class UserDataInfoView: UIView {
         delegate?.nextBtnClick(self)
     }
     
-    @objc func pressedGenderButton(_ sender: UIButton) {
+    @objc func pressedSexButton(_ sender: UIButton) {
         sender.backgroundColor = .mainBlueColor
         sender.setTitleColor(.selectedButtonTitleColor, for: .normal)
         userDataInfo.sex = sender.currentTitle ?? "Male"
