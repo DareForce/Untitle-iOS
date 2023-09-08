@@ -12,15 +12,12 @@ class UserDataInfoViewController: BaseViewController {
     
     // MARK: - View
     
-    private let userDataInfoView = UserDataInfoView()
+    private let userDataInfoView = UserDataInfoView(frame: UIScreen.main.bounds)
+
+    // MARK: - LifeCycle
     
-    // MARK: - Lauout
-    
-    override func layout() {
-        self.view.addSubview(userDataInfoView)
-        self.userDataInfoView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide)
-        }
+    override func loadView() {
+        view = userDataInfoView
     }
     
     // MARK: - Configure
