@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AllergiesCollectionViewCell: UICollectionViewCell {
+final class AllergiesCollectionViewCell: UICollectionViewCell {
     static let identifier = "AllergiesCollectionViewCell"
     public var cellLabel = UILabel().then{
         $0.text = "Garlic"

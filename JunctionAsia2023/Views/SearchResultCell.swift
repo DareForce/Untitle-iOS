@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchResultCell: UITableViewCell {
+final class SearchResultCell: UITableViewCell {
 
     // MARK: - Property
     

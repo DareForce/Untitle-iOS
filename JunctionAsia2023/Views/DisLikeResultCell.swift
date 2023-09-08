@@ -12,7 +12,7 @@ protocol DisLikeResultCellDelegate: AnyObject {
     func didTapXButton(_ sender: UILabel)
 }
 
-class DisLikeResultCell: UICollectionViewCell {
+final class DisLikeResultCell: UICollectionViewCell {
 
     // MARK: - Property
     
