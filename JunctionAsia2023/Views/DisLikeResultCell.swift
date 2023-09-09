@@ -8,16 +8,16 @@
 import UIKit
 import SnapKit
 
-protocol DisLikeResultCellDelegate: AnyObject {
+protocol DislikeResultCellDelegate: AnyObject {
     func didTapXButton(_ sender: UILabel)
 }
 
-final class DisLikeResultCell: UICollectionViewCell {
+final class DislikeResultCell: UICollectionViewCell {
 
     // MARK: - Property
     
     static let identifier = "disLikeResultCell"
-    weak var delegate: DisLikeResultCellDelegate?
+    weak var delegate: DislikeResultCellDelegate?
     
     // MARK: - View
     
@@ -84,7 +84,7 @@ final class DisLikeResultCell: UICollectionViewCell {
     }
     
     static func fittingSize(availableHeight: CGFloat, _ disLikeType: String) -> CGSize {
-        let cell = DisLikeResultCell()
+        let cell = DislikeResultCell()
         cell.configureText(disLikeType)
         let targetSize = CGSize(width: UIView.layoutFittingCompressedSize.width, height: availableHeight)
         return cell.contentView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: .fittingSizeLevel, verticalFittingPriority: .required)
