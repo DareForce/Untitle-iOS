@@ -42,9 +42,14 @@ final class DislikeResultCell: UICollectionViewCell {
         return $0
     }(UILabel())
     
+    private lazy var xButton: UIImageView = {
         $0.image = UIImage(systemName: "xmark")
         $0.contentMode = .scaleAspectFit
         $0.tintColor = .white
+        $0.isUserInteractionEnabled = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapXButton))
+        $0.addGestureRecognizer(tapGesture)
         return $0
     }(UIImageView())
     
@@ -86,14 +91,18 @@ final class DislikeResultCell: UICollectionViewCell {
         containerView.layer.maskedCorners = type.maskedCorners
     }
     
+    // MARK: - Button
+    
+    @objc func didTapXButton() {
+        delegate?.didTapXButton(disLikeLabel)
+    }
+    
+    // MARK: - Method
+    
     static func fittingSize(availableHeight: CGFloat, _ disLikeType: String) -> CGSize {
         let cell = DislikeResultCell()
         cell.configureText(disLikeType)
         let targetSize = CGSize(width: UIView.layoutFittingCompressedSize.width, height: availableHeight)
         return cell.contentView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: .fittingSizeLevel, verticalFittingPriority: .required)
-    }
-    
-    @objc func didTapXButton() {
-        delegate?.didTapXButton(disLikeLabel)
     }
 }
