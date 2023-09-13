@@ -21,19 +21,27 @@ final class DislikeResultCell: UICollectionViewCell {
     
     // MARK: - View
     
-    let containerView: UIStackView = {
+    private let containerView: UIStackView = {
         $0.axis = .horizontal
         $0.alignment = .center
         $0.distribution = .equalSpacing
         $0.spacing = 3
+        $0.layer.cornerRadius = Size.keywordLabelHeight / 2
+        $0.layer.masksToBounds = true
+        $0.backgroundColor = .blue
         return $0
     }(UIStackView())
     
-    let leftEmptyView = UIView()
-    let rightEmptyView = UIView()
-    let disLikeLabel = UILabel()
+    private let leftEmptyView = UIView()
+    private let rightEmptyView = UIView()
     
-    let xButton: UIImageView = {
+    let disLikeLabel: UILabel = {
+        $0.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        $0.textColor = .white
+        $0.textAlignment = .center
+        return $0
+    }(UILabel())
+    
         $0.image = UIImage(systemName: "xmark")
         $0.contentMode = .scaleAspectFit
         $0.tintColor = .white
@@ -46,18 +54,15 @@ final class DislikeResultCell: UICollectionViewCell {
         super.init(frame: frame)
         
         layout()
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapXButton))
-        addGestureRecognizer(tapGesture)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Method
+    // MARK: - Layout
     
-    func layout() {
+    private func layout() {
         contentView.addSubview(containerView)
         containerView.snp.makeConstraints {
             $0.edges.equalTo(safeAreaLayoutGuide)
@@ -69,18 +74,14 @@ final class DislikeResultCell: UICollectionViewCell {
         containerView.addArrangedSubview(rightEmptyView)
     }
     
-    func configureText(_ disLikeText: String) {
+    // MARK: - Configure
+    
+    private func configureText(_ disLikeText: String) {
         disLikeLabel.text = disLikeText
     }
     
     func configureLabel(_ type: KeywordType) {
-        disLikeLabel.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
-        disLikeLabel.textColor = .white
-        disLikeLabel.textAlignment = .center
-        containerView.layer.cornerRadius = Size.keywordLabelHeight / 2
-        containerView.layer.masksToBounds = true
         containerView.layer.maskedCorners = type.maskedCorners
-        containerView.backgroundColor = .blue
     }
     
     static func fittingSize(availableHeight: CGFloat, _ disLikeType: String) -> CGSize {
