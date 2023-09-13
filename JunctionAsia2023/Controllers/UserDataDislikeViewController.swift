@@ -14,7 +14,11 @@ final class UserDataDislikeViewController: BaseViewController {
     
     var userName: String?
     var allergyDatum = [Int: String]()
-    static var dislikeType = [Keyword]()
+    var dislikeType = [Keyword]() {
+        didSet {
+            userDataDislikeView.dislikeType = dislikeType
+        }
+    }
     
     // MARK: - View
     
@@ -31,12 +35,7 @@ final class UserDataDislikeViewController: BaseViewController {
 
         userDataDislikeView.delegate = self
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        userDataDislikeView.dislikeCollectionView.reloadData()
-        userDataDislikeView.disLikeType = UserDataDislikeViewController.dislikeType
-    }
-    
+
     // MARK: - Configure
     
     override func configure() {
@@ -48,7 +47,7 @@ final class UserDataDislikeViewController: BaseViewController {
 
 // MARK: - UserDataDislikeViewProtocol
 
-extension UserDataDislikeViewController: UserDataDislikeViewProtocol {
+extension UserDataDislikeViewController: UserDataDislikeViewDelegate {
     
     // MARK: Navigation
     
@@ -61,7 +60,7 @@ extension UserDataDislikeViewController: UserDataDislikeViewProtocol {
         let tabBarController = TabBarController()
         tabBarController.selectedIndex = 1
         tabBarController.mainVC.allergyDatum = allergyDatum.sorted(by: {$0.key < $1.key}).map { $0.value }
-        tabBarController.mainVC.disLikeDatum = userDataDislikeView.disLikeType
+        tabBarController.mainVC.disLikeDatum = userDataDislikeView.dislikeType
         tabBarController.mainVC.userName = userName ?? "홍길동"
         navigationController?.navigationBar.isHidden = true
         navigationController?.pushViewController(tabBarController, animated: true)
@@ -70,10 +69,8 @@ extension UserDataDislikeViewController: UserDataDislikeViewProtocol {
     // MARK: Button
     
     func didTapXButton(_ sender: UILabel) {
-        if let index = userDataDislikeView.disLikeType.firstIndex(where: {$0.string == sender.text} ) {
-            userDataDislikeView.disLikeType.remove(at: index)
-            
-            userDataDislikeView.dislikeCollectionView.reloadData()
+        if let index = dislikeType.firstIndex(where: {$0.string == sender.text} ) {
+            dislikeType.remove(at: index)
         }
     }
 }

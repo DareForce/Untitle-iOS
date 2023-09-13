@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-protocol UserDataDislikeViewProtocol: AnyObject {
+protocol UserDataDislikeViewDelegate: AnyObject {
     func moveToSearchResultViewController()
     func moveToMainViewController()
     func didTapXButton(_ sender: UILabel)
@@ -16,14 +16,14 @@ protocol UserDataDislikeViewProtocol: AnyObject {
 
 final class UserDataDislikeView: UIView {
     
-    
     // MARK: - Properties
     
-    weak var delegate: UserDataDislikeViewProtocol?
+    weak var delegate: UserDataDislikeViewDelegate?
     
-    var disLikeType = [Keyword]() {
+    var dislikeType = [Keyword]() {
         didSet {
-            count = disLikeType.count
+            count = dislikeType.count
+            dislikeCollectionView.reloadData()
         }
     }
     private var count: Int? {
@@ -89,7 +89,6 @@ final class UserDataDislikeView: UIView {
         $0.addTarget(self, action: #selector(moveToMainViewController), for: .touchUpInside)
         return $0
     }(UIButton())
-    
     
     // MARK: - Inits
 
@@ -161,7 +160,6 @@ final class UserDataDislikeView: UIView {
         dislikeCollectionView.dataSource = self
         dislikeCollectionView.register(DislikeResultCell.self, forCellWithReuseIdentifier: DislikeResultCell.identifier)
     }
-    
 }
 
 // MARK: - DisLikeResultCellDelegate
@@ -189,22 +187,24 @@ extension UserDataDislikeView: DislikeResultCellDelegate {
 
 extension UserDataDislikeView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return disLikeType.count
+        return dislikeType.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DislikeResultCell.identifier, for: indexPath) as! DislikeResultCell
-        let labelText = disLikeType[indexPath.row].string
-        let labelType = disLikeType[indexPath.row].type
+        let labelText = dislikeType[indexPath.row].string
+        let labelType = dislikeType[indexPath.row].type
 
+        cell.delegate = self
+        
         cell.disLikeLabel.text = labelText
         cell.configureLabel(labelType)
-        cell.delegate = self
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let labelText = disLikeType[indexPath.row].string
+        let labelText = dislikeType[indexPath.row].string
 
         return DislikeResultCell.fittingSize(availableHeight: 45, labelText)
     }
