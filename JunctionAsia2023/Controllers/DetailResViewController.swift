@@ -6,14 +6,15 @@
 //
 
 import UIKit
+import Then
 
 class DetailResViewController: BaseViewController {
-    public var id:Int?
+    var id:Int?
     private var apidata:[MenuData] = []
     private let api = DetailService()
     var ressubLabel = UILabel().then{
         $0.text = "School|Food"
-        $0.textColor =  UIColor(hexString: "#FFFFFF", alpha: 0.6)
+        $0.textColor = .selectedButtonTitleColor
         $0.font = UIFont.boldSystemFont(ofSize: 20)
     }
     var resNameLabel = UILabel().then{
@@ -106,7 +107,7 @@ extension DetailResViewController: UITableViewDelegate, UITableViewDataSource{
         
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
-        cell.bottomLabel.textColor =  UIColor(hexString: "#3E24FF")
+        cell.bottomLabel.textColor = .mainBlueColor
         cell.bottomLabel.font = UIFont.boldSystemFont(ofSize: 17)
         cell.bottomLabel.text = "₩" + numberFormatter.string(from: NSNumber(value: apidata[indexPath.row].price))!
 //        cell.selectionStyle = .none

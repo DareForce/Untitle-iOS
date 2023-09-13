@@ -45,7 +45,7 @@ class RestaurantViewController: BaseViewController {
     
     private let subtitleLabel = UILabel().then{
         $0.text = "Choose your menu without worrying!"+"\n"+"JAKA always considering your health"
-        $0.textColor =  UIColor(hexString: "#3C3C43", alpha: 0.6)
+        $0.textColor = .unselectedButtonTitleColor
         $0.font = UIFont.systemFont(ofSize: 17)
         $0.numberOfLines = 2
     }

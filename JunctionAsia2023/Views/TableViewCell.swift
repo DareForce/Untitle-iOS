@@ -32,14 +32,14 @@ final class TableViewCell: UITableViewCell {
     
     var midLabel = UILabel().then{
         $0.text = "Food type or Allergy name"
-        $0.textColor =  UIColor(hexString: "#3C3C43", alpha: 0.6)
+        $0.textColor = .unselectedButtonTitleColor
         $0.numberOfLines = 0
         $0.font = UIFont.systemFont(ofSize: 15)
     }
     
     var bottomLabel = UILabel().then{
         $0.text = "Menus or Price"
-        $0.textColor =  UIColor(hexString: "#3C3C43")
+        $0.textColor = .unselectedButtonTitleColor
         $0.font = UIFont.systemFont(ofSize: 12)
     }
     

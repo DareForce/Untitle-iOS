@@ -41,14 +41,14 @@ final class UserDataInfoView: UIView {
     
     private let subtitleLabel: UILabel = {
         $0.text = "Enter your credentials to continue"
-        $0.textColor =  UIColor(hexString: "#3C3C43", alpha: 0.6)
+        $0.textColor = .unselectedButtonTitleColor
         $0.font = UIFont.systemFont(ofSize: 17)
         return $0
     }(UILabel())
     
     private let nameLabel: UILabel = {
         $0.text = "Name"
-        $0.textColor = UIColor(hexString: "#3C3C43", alpha: 0.6)
+        $0.textColor = .unselectedButtonTitleColor
         $0.font = UIFont.systemFont(ofSize: 13)
         return $0
     }(UILabel())
@@ -56,7 +56,7 @@ final class UserDataInfoView: UIView {
     let nameTextField: UITextField = {
         $0.setLeftPaddingPoints(12)
         $0.font = UIFont.systemFont(ofSize: 17)
-        $0.backgroundColor = UIColor(hexString: "#F0F0F0")
+        $0.backgroundColor = .unselectedButtonBackgroundColor
         $0.layer.cornerRadius = 15
         $0.layer.masksToBounds = true
         $0.autocorrectionType = .no
@@ -67,7 +67,7 @@ final class UserDataInfoView: UIView {
     
     private let ageLabel: UILabel = {
         $0.text = "Age"
-        $0.textColor = UIColor(hexString: "#3C3C43", alpha: 0.6)
+        $0.textColor = .unselectedButtonTitleColor
         $0.font = UIFont.systemFont(ofSize: 13)
         return $0
     }(UILabel())
@@ -75,7 +75,7 @@ final class UserDataInfoView: UIView {
     private let ageTextField: UITextField = {
         $0.setLeftPaddingPoints(12)
         $0.font = UIFont.systemFont(ofSize: 17)
-        $0.backgroundColor = UIColor(hexString: "#F0F0F0")
+        $0.backgroundColor = .unselectedButtonBackgroundColor
         $0.layer.cornerRadius = 15
         $0.layer.masksToBounds = true
         $0.keyboardType = .numberPad
@@ -84,7 +84,7 @@ final class UserDataInfoView: UIView {
     
     private let sexLabel: UILabel = {
         $0.text = "Sex"
-        $0.textColor = UIColor(hexString: "#3C3C43", alpha: 0.6)
+        $0.textColor = .unselectedButtonTitleColor
         $0.font = UIFont.systemFont(ofSize: 13)
         return $0
     }(UILabel())
@@ -123,7 +123,7 @@ final class UserDataInfoView: UIView {
         $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         $0.setTitleColor(.selectedButtonTitleColor, for: .normal)
         $0.setTitleColor(.mainBlueColor, for: .disabled)
-        $0.backgroundColor = UIColor(hexString: "#E6E2FF")
+        $0.backgroundColor = .disabledButtonColor
         $0.addTarget(self, action: #selector(pressedNextButton), for: .touchUpInside)
         $0.layer.cornerRadius = 15
         $0.layer.masksToBounds = true

@@ -19,7 +19,7 @@ final class DetailMenuViewController: BaseViewController {
     
     private var ressubLabel = UILabel().then{
         $0.text = "School|Food"
-        $0.textColor =  UIColor(hexString: "#FFFFFF", alpha: 0.6)
+        $0.textColor = UIColor(white: 1, alpha: 0.6)
         $0.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
     }
     
@@ -116,7 +116,7 @@ extension DetailMenuViewController: UITableViewDelegate, UITableViewDataSource {
         
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
-        cell.bottomLabel.textColor =  UIColor(hexString: "#3E24FF")
+        cell.bottomLabel.textColor = .mainBlueColor
         cell.bottomLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         cell.bottomLabel.text = "₩" + numberFormatter.string(from: NSNumber(value: apidata[indexPath.row].price))!
         return cell

@@ -29,11 +29,11 @@ final class UserDataDislikeView: UIView {
     private var count: Int? {
         didSet {
             if count == 0 {
-                skipAndSuccessButton.setTitleColor(UIColor(hexString: "#3E24FF"), for: .normal)
-                skipAndSuccessButton.backgroundColor = UIColor(hexString: "#E6E2FF")
+                skipAndSuccessButton.setTitleColor(.mainBlueColor, for: .normal)
+                skipAndSuccessButton.backgroundColor = .disabledButtonColor
             } else {
                 skipAndSuccessButton.setTitleColor(.white, for: .normal)
-                skipAndSuccessButton.backgroundColor = UIColor(hexString: "#3E24FF")
+                skipAndSuccessButton.backgroundColor = .mainBlueColor
             }
         }
     }
@@ -82,8 +82,8 @@ final class UserDataDislikeView: UIView {
     private let skipAndSuccessButton: UIButton = {
         $0.setTitle("Next", for: .normal)
         $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
-        $0.setTitleColor(UIColor(hexString: "#3E24FF"), for: .normal)
-        $0.backgroundColor = UIColor(hexString: "#E6E2FF")
+        $0.setTitleColor(.mainBlueColor, for: .normal)
+        $0.backgroundColor = .disabledButtonColor
         $0.layer.cornerRadius = 15
         $0.layer.masksToBounds = true
         $0.addTarget(self, action: #selector(moveToMainViewController), for: .touchUpInside)

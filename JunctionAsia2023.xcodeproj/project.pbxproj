@@ -29,7 +29,6 @@
 		983074D52A8F635F00A060CD /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074D42A8F635F00A060CD /* BaseViewController.swift */; };
 		983074DF2A8F642B00A060CD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074DE2A8F642B00A060CD /* NetworkManager.swift */; };
 		983074E52A8F645C00A060CD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074E42A8F645C00A060CD /* Model.swift */; };
-		983074E72A8F657700A060CD /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074E62A8F657700A060CD /* ViewController+Extension.swift */; };
 		983074ED2A90517500A060CD /* UserDataAllegyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074EC2A90517500A060CD /* UserDataAllegyViewController.swift */; };
 		983074F32A905CF000A060CD /* UserDataAllergyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074F22A905CF000A060CD /* UserDataAllergyCell.swift */; };
 		983074F52A906C0100A060CD /* UserDataCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074F42A906C0100A060CD /* UserDataCollectionViewLayout.swift */; };
@@ -41,6 +40,7 @@
 		983075022A94957800A060CD /* DynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983075012A94957800A060CD /* DynamicCollectionView.swift */; };
 		983075042A9A30C600A060CD /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983075032A9A30C600A060CD /* UIColor+Extension.swift */; };
 		9892EDE22AAC5CE000120CAE /* UserDataDislikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9892EDE12AAC5CE000120CAE /* UserDataDislikeView.swift */; };
+		98FAC71F2AB1FFFF00F222F5 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98FAC71E2AB1FFFF00F222F5 /* Colors.xcassets */; };
 		9A7A54137625587D2E798F2A /* Pods_JunctionAsia2023.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E745AEC367791908A39015FB /* Pods_JunctionAsia2023.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,7 +69,6 @@
 		983074D42A8F635F00A060CD /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		983074DE2A8F642B00A060CD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		983074E42A8F645C00A060CD /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		983074E62A8F657700A060CD /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
 		983074EC2A90517500A060CD /* UserDataAllegyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataAllegyViewController.swift; sourceTree = "<group>"; };
 		983074F22A905CF000A060CD /* UserDataAllergyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataAllergyCell.swift; sourceTree = "<group>"; };
 		983074F42A906C0100A060CD /* UserDataCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataCollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -81,6 +80,7 @@
 		983075012A94957800A060CD /* DynamicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionView.swift; sourceTree = "<group>"; };
 		983075032A9A30C600A060CD /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		9892EDE12AAC5CE000120CAE /* UserDataDislikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataDislikeView.swift; sourceTree = "<group>"; };
+		98FAC71E2AB1FFFF00F222F5 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		B09F0A3D3AEB6E8FA9C00233 /* Pods-JunctionAsia2023.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JunctionAsia2023.release.xcconfig"; path = "Target Support Files/Pods-JunctionAsia2023/Pods-JunctionAsia2023.release.xcconfig"; sourceTree = "<group>"; };
 		CD8EDBAD5A2BE65CD04EC36F /* Pods-JunctionAsia2023.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JunctionAsia2023.debug.xcconfig"; path = "Target Support Files/Pods-JunctionAsia2023/Pods-JunctionAsia2023.debug.xcconfig"; sourceTree = "<group>"; };
 		E745AEC367791908A39015FB /* Pods_JunctionAsia2023.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JunctionAsia2023.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +128,7 @@
 				983074D62A8F63BB00A060CD /* Models */,
 				983074DA2A8F63EA00A060CD /* Helpers */,
 				09171AC12A8F5B4E0097A9A5 /* Assets.xcassets */,
+				98FAC71E2AB1FFFF00F222F5 /* Colors.xcassets */,
 				09171AC32A8F5B4E0097A9A5 /* LaunchScreen.storyboard */,
 				09171AC62A8F5B4E0097A9A5 /* Info.plist */,
 			);
@@ -208,9 +209,8 @@
 		983074DD2A8F642000A060CD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				983074E62A8F657700A060CD /* ViewController+Extension.swift */,
-				983074FF2A91415B00A060CD /* UITextField+Extension.swift */,
 				983075032A9A30C600A060CD /* UIColor+Extension.swift */,
+				983074FF2A91415B00A060CD /* UITextField+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -284,6 +284,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98FAC71F2AB1FFFF00F222F5 /* Colors.xcassets in Resources */,
 				09171AC52A8F5B4E0097A9A5 /* LaunchScreen.storyboard in Resources */,
 				09171AC22A8F5B4E0097A9A5 /* Assets.xcassets in Resources */,
 			);
@@ -363,7 +364,6 @@
 				09171AD52A907EE20097A9A5 /* MainViewController.swift in Sources */,
 				0968149B2A90D8EF003D34B2 /* TableViewCell.swift in Sources */,
 				09171AD32A907E7A0097A9A5 /* MainView.swift in Sources */,
-				983074E72A8F657700A060CD /* ViewController+Extension.swift in Sources */,
 				983074E52A8F645C00A060CD /* Model.swift in Sources */,
 				09D5FE222A914BD40082EB28 /* DetailMenuViewController.swift in Sources */,
 				0968149F2A9117D7003D34B2 /* LoginService.swift in Sources */,

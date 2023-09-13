@@ -27,7 +27,7 @@ final class UserDataAllergyCell: UICollectionViewCell {
             if isSelected {
                 allergyLabel.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
                 allergyLabel.textColor = .white
-                allergyLabel.backgroundColor = UIColor(hexString: "#3E24FF")
+                allergyLabel.backgroundColor = .mainBlueColor
             } else {
                 allergyLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
                 allergyLabel.textColor = .black
