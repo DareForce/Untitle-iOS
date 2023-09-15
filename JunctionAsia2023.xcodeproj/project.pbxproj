@@ -41,6 +41,7 @@
 		983075042A9A30C600A060CD /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983075032A9A30C600A060CD /* UIColor+Extension.swift */; };
 		9892EDE22AAC5CE000120CAE /* UserDataDislikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9892EDE12AAC5CE000120CAE /* UserDataDislikeView.swift */; };
 		98FAC71F2AB1FFFF00F222F5 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98FAC71E2AB1FFFF00F222F5 /* Colors.xcassets */; };
+		98FAC7232AB36A3A00F222F5 /* UserDataAllergyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FAC7222AB36A3A00F222F5 /* UserDataAllergyView.swift */; };
 		9A7A54137625587D2E798F2A /* Pods_JunctionAsia2023.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E745AEC367791908A39015FB /* Pods_JunctionAsia2023.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,7 @@
 		983075032A9A30C600A060CD /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		9892EDE12AAC5CE000120CAE /* UserDataDislikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataDislikeView.swift; sourceTree = "<group>"; };
 		98FAC71E2AB1FFFF00F222F5 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		98FAC7222AB36A3A00F222F5 /* UserDataAllergyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataAllergyView.swift; sourceTree = "<group>"; };
 		B09F0A3D3AEB6E8FA9C00233 /* Pods-JunctionAsia2023.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JunctionAsia2023.release.xcconfig"; path = "Target Support Files/Pods-JunctionAsia2023/Pods-JunctionAsia2023.release.xcconfig"; sourceTree = "<group>"; };
 		CD8EDBAD5A2BE65CD04EC36F /* Pods-JunctionAsia2023.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JunctionAsia2023.debug.xcconfig"; path = "Target Support Files/Pods-JunctionAsia2023/Pods-JunctionAsia2023.debug.xcconfig"; sourceTree = "<group>"; };
 		E745AEC367791908A39015FB /* Pods_JunctionAsia2023.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JunctionAsia2023.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,7 +165,7 @@
 				09171ADA2A9088F00097A9A5 /* RestaurantViewController.swift */,
 				983074F92A908EFF00A060CD /* SearchResultViewController.swift */,
 				09171AD62A9088910097A9A5 /* TabBarController.swift */,
-				983074EC2A90517500A060CD /* UserDataAllegyViewController.swift */,
+				983074EC2A90517500A060CD /* UserDataAllergyViewController.swift */,
 				983074F72A90834200A060CD /* UserDataDislikeViewController.swift */,
 				09171ACC2A9058800097A9A5 /* UserDataInfoViewController.swift */,
 			);
@@ -179,6 +181,7 @@
 				983074FB2A90D6BA00A060CD /* SearchResultCell.swift */,
 				0968149A2A90D8EF003D34B2 /* TableViewCell.swift */,
 				983074F22A905CF000A060CD /* UserDataAllergyCell.swift */,
+				98FAC7222AB36A3A00F222F5 /* UserDataAllergyView.swift */,
 				9892EDE12AAC5CE000120CAE /* UserDataDislikeView.swift */,
 				09171ACE2A9058B50097A9A5 /* UserDataInfoView.swift */,
 			);
@@ -312,6 +315,7 @@
 		};
 		983074F62A90739B00A060CD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -372,7 +376,7 @@
 				09D5FE202A913C740082EB28 /* DetailService.swift in Sources */,
 				983075002A91415B00A060CD /* UITextField+Extension.swift in Sources */,
 				09171ADD2A9089080097A9A5 /* HistoryViewController.swift in Sources */,
-				983074ED2A90517500A060CD /* UserDataAllegyViewController.swift in Sources */,
+				983074ED2A90517500A060CD /* UserDataAllergyViewController.swift in Sources */,
 				983074D52A8F635F00A060CD /* BaseViewController.swift in Sources */,
 				09171ACF2A9058B50097A9A5 /* UserDataInfoView.swift in Sources */,
 				983074DF2A8F642B00A060CD /* NetworkManager.swift in Sources */,
@@ -380,6 +384,7 @@
 				983074FC2A90D6BA00A060CD /* SearchResultCell.swift in Sources */,
 				983074FA2A908EFF00A060CD /* SearchResultViewController.swift in Sources */,
 				983074F52A906C0100A060CD /* UserDataCollectionViewLayout.swift in Sources */,
+				98FAC7232AB36A3A00F222F5 /* UserDataAllergyView.swift in Sources */,
 				09171AB92A8F5B4C0097A9A5 /* AppDelegate.swift in Sources */,
 				09171AD72A9088910097A9A5 /* TabBarController.swift in Sources */,
 				0968149D2A90E5A2003D34B2 /* DetailResViewController.swift in Sources */,

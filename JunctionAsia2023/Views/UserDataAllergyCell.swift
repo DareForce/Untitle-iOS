@@ -21,7 +21,6 @@ final class UserDataAllergyCell: UICollectionViewCell {
     // MARK: - Property
     
     static let identifier = "userDataCell"
-    lazy var keywordType: KeywordType = .previewKeyword
     override var isSelected: Bool {
         didSet {
             if isSelected {
@@ -50,12 +49,14 @@ final class UserDataAllergyCell: UICollectionViewCell {
     
     // MARK: - Init
     
+    @available(*, unavailable)
     override init(frame: CGRect) {
         super.init(frame: frame)
 
         layout()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -72,10 +73,6 @@ final class UserDataAllergyCell: UICollectionViewCell {
 
     func configureText(_ allergy: String) {
         allergyLabel.text = allergy
-    }
-    
-    func configureLabel(_ type: KeywordType) {
-        allergyLabel.layer.maskedCorners = type.maskedCorners
     }
     
     static func fittingSize(availableHeight: CGFloat, _ allergyType: String) -> CGSize {
