@@ -12,8 +12,8 @@ class SearchResultViewController: BaseViewController {
     
     // MARK: - Property
     
-    static var disLikeType = disLikeMockData
-    var searchingData = [Keyword]()
+    var disLikeType = Ingredient.DislikeFood.allCases
+    var searchingDatum = [Ingredient.DislikeFood]()
     
     // MARK: - View
     
@@ -24,12 +24,15 @@ class SearchResultViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = self
         searchBar.placeholder = "Search"
         navigationItem.titleView = searchBar
-        navigationItem.hidesSearchBarWhenScrolling = false
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(popToViewController))
         
-        searchBar.delegate = self
+        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"),
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(popToViewController))
     }
     
     // MARK: - Layout
@@ -57,11 +60,14 @@ class SearchResultViewController: BaseViewController {
     }
 }
 
+// MARK: - UISearchBarDelegate
+
 extension SearchResultViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchingData = []
+        searchingDatum = []
         
-        searchingData = SearchResultViewController.disLikeType.filter({ $0.string.contains(searchText) })
+        searchingDatum = disLikeType.filter({
+            $0.description.lowercased().contains(searchText.lowercased()) })
         
         tableView.reloadData()
     }
@@ -70,21 +76,21 @@ extension SearchResultViewController: UISearchBarDelegate {
 
 extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchingData.count == 0 {
-            return SearchResultViewController.disLikeType.count
+        if searchingDatum.count == 0 {
+            return disLikeType.count
         } else {
-            return searchingData.count
+            return searchingDatum.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultCell.identifier, for: indexPath) as! SearchResultCell
-
-        if searchingData.count == 0 {
-            let labelText = SearchResultViewController.disLikeType[indexPath.row].string
+        
+        if searchingDatum.count == 0 {
+            let labelText = disLikeType[indexPath.row].description
             cell.configure(labelText)
         } else {
-            let labelText = searchingData[indexPath.row].string
+            let labelText = searchingDatum[indexPath.row].description
             cell.configure(labelText)
         }
         
@@ -92,12 +98,16 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if searchingData.count == 0 {
-            UserDataDislikeViewController.disLikeType.append(SearchResultViewController.disLikeType[indexPath.row])
-        } else {
-            UserDataDislikeViewController.disLikeType.append(searchingData[indexPath.row])
-        }
+        guard let viewControllers = navigationController?.viewControllers,
+              let index = viewControllers.lastIndex(where: {$0 is UserDataDislikeViewController}),
+              let userDataDislikeViewController = viewControllers[index] as? UserDataDislikeViewController else { return }
         
-        navigationController?.popViewController(animated: false)
+        if searchingDatum.count == 0 {
+            userDataDislikeViewController.dislikeType.append(disLikeType[indexPath.row])
+        } else {
+            userDataDislikeViewController.dislikeType.append(searchingDatum[indexPath.row])
+        }
+
+        popToViewController()
     }
 }

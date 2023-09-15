@@ -20,7 +20,7 @@ final class UserDataDislikeView: UIView {
     
     weak var delegate: UserDataDislikeViewDelegate?
     
-    var dislikeType = [Keyword]() {
+    var dislikeType = [Ingredient.DislikeFood]() {
         didSet {
             count = dislikeType.count
             dislikeCollectionView.reloadData()
@@ -192,7 +192,7 @@ extension UserDataDislikeView: UICollectionViewDelegateFlowLayout, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DislikeResultCell.identifier, for: indexPath) as! DislikeResultCell
-        let labelText = dislikeType[indexPath.row].string
+        let labelText = dislikeType[indexPath.row].description
 
         cell.delegate = self
         
@@ -202,7 +202,7 @@ extension UserDataDislikeView: UICollectionViewDelegateFlowLayout, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let labelText = dislikeType[indexPath.row].string
+        let labelText = dislikeType[indexPath.row].description
 
         return DislikeResultCell.fittingSize(availableHeight: 45, labelText)
     }

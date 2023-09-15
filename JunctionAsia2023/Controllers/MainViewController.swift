@@ -8,8 +8,8 @@
 import UIKit
 
 class MainViewController: BaseViewController {
-    var allergyDatum =  [String]()
-    var disLikeDatum = [Keyword]()
+    var allergyDatum = [String]()
+    var disLikeDatum = Ingredient.DislikeFood.allCases
     var userName = "홍길동"
     private let mainView: MainView = MainView(frame: UIScreen.main.bounds)
     
@@ -43,7 +43,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.cellLabel.text = allergyDatum[indexPath.row]
             return cell
         } else {
-            cell.cellLabel.text = disLikeDatum[indexPath.row].string
+            cell.cellLabel.text = disLikeDatum[indexPath.row].description
             return cell
         }
     }

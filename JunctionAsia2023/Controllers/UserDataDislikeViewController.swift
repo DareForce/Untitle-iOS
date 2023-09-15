@@ -14,7 +14,7 @@ final class UserDataDislikeViewController: BaseViewController {
     
     var userName: String?
     var allergyDatum = [Int: String]()
-    var dislikeType = [Keyword]() {
+    var dislikeType = [Ingredient.DislikeFood]() {
         didSet {
             userDataDislikeView.dislikeType = dislikeType
         }
@@ -69,7 +69,7 @@ extension UserDataDislikeViewController: UserDataDislikeViewDelegate {
     // MARK: Button
     
     func didTapXButton(_ sender: UILabel) {
-        if let index = dislikeType.firstIndex(where: {$0.string == sender.text} ) {
+        if let index = dislikeType.firstIndex(where: {$0.description == sender.text} ) {
             dislikeType.remove(at: index)
         }
     }
