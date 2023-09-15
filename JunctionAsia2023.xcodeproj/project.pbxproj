@@ -28,8 +28,8 @@
 		09D5FE222A914BD40082EB28 /* DetailMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D5FE212A914BD40082EB28 /* DetailMenuViewController.swift */; };
 		983074D52A8F635F00A060CD /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074D42A8F635F00A060CD /* BaseViewController.swift */; };
 		983074DF2A8F642B00A060CD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074DE2A8F642B00A060CD /* NetworkManager.swift */; };
-		983074E52A8F645C00A060CD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074E42A8F645C00A060CD /* Model.swift */; };
-		983074ED2A90517500A060CD /* UserDataAllegyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074EC2A90517500A060CD /* UserDataAllegyViewController.swift */; };
+		983074E52A8F645C00A060CD /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074E42A8F645C00A060CD /* Ingredient.swift */; };
+		983074ED2A90517500A060CD /* UserDataAllergyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074EC2A90517500A060CD /* UserDataAllergyViewController.swift */; };
 		983074F32A905CF000A060CD /* UserDataAllergyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074F22A905CF000A060CD /* UserDataAllergyCell.swift */; };
 		983074F52A906C0100A060CD /* UserDataCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074F42A906C0100A060CD /* UserDataCollectionViewLayout.swift */; };
 		983074F82A90834200A060CD /* UserDataDislikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983074F72A90834200A060CD /* UserDataDislikeViewController.swift */; };
@@ -68,8 +68,8 @@
 		09D5FE212A914BD40082EB28 /* DetailMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMenuViewController.swift; sourceTree = "<group>"; };
 		983074D42A8F635F00A060CD /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		983074DE2A8F642B00A060CD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		983074E42A8F645C00A060CD /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		983074EC2A90517500A060CD /* UserDataAllegyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataAllegyViewController.swift; sourceTree = "<group>"; };
+		983074E42A8F645C00A060CD /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		983074EC2A90517500A060CD /* UserDataAllergyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataAllergyViewController.swift; sourceTree = "<group>"; };
 		983074F22A905CF000A060CD /* UserDataAllergyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataAllergyCell.swift; sourceTree = "<group>"; };
 		983074F42A906C0100A060CD /* UserDataCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataCollectionViewLayout.swift; sourceTree = "<group>"; };
 		983074F72A90834200A060CD /* UserDataDislikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataDislikeViewController.swift; sourceTree = "<group>"; };
@@ -147,7 +147,7 @@
 		983074D62A8F63BB00A060CD /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				983074E42A8F645C00A060CD /* Model.swift */,
+				983074E42A8F645C00A060CD /* Ingredient.swift */,
 				09171AD02A9073950097A9A5 /* UserModel.swift */,
 			);
 			path = Models;
@@ -364,7 +364,7 @@
 				09171AD52A907EE20097A9A5 /* MainViewController.swift in Sources */,
 				0968149B2A90D8EF003D34B2 /* TableViewCell.swift in Sources */,
 				09171AD32A907E7A0097A9A5 /* MainView.swift in Sources */,
-				983074E52A8F645C00A060CD /* Model.swift in Sources */,
+				983074E52A8F645C00A060CD /* Ingredient.swift in Sources */,
 				09D5FE222A914BD40082EB28 /* DetailMenuViewController.swift in Sources */,
 				0968149F2A9117D7003D34B2 /* LoginService.swift in Sources */,
 				09171AE12A90BC530097A9A5 /* AllergiesCollectionViewCell.swift in Sources */,
