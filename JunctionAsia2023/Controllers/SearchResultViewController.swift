@@ -8,39 +8,6 @@
 import UIKit
 import SnapKit
 
-var disLikeMockData: [Keyword] = [
-    Keyword(string: "Carrot", type: .previewKeyword),
-    Keyword(string: "Broccoli", type: .previewKeyword),
-    Keyword(string: "Spinach", type: .previewKeyword),
-    Keyword(string: "Zucchini", type: .previewKeyword),
-    Keyword(string: "Bell Pepper", type: .previewKeyword),
-    Keyword(string: "Onion", type: .previewKeyword),
-    Keyword(string: "Cauliflower", type: .previewKeyword),
-    Keyword(string: "Sweet Potato", type: .previewKeyword),
-    Keyword(string: "Cabbage", type: .previewKeyword),
-    Keyword(string: "Apple", type: .previewKeyword),
-    Keyword(string: "Banana", type: .previewKeyword),
-    Keyword(string: "Orange", type: .previewKeyword),
-    Keyword(string: "Grape", type: .previewKeyword),
-    Keyword(string: "Strawberry", type: .previewKeyword),
-    Keyword(string: "Blueberry", type: .previewKeyword),
-    Keyword(string: "Raspberry", type: .previewKeyword),
-    Keyword(string: "Pineapple", type: .previewKeyword),
-    Keyword(string: "Lemon", type: .previewKeyword),
-    Keyword(string: "Lime", type: .previewKeyword),
-    Keyword(string: "Coconut", type: .previewKeyword),
-    Keyword(string: "Almond", type: .previewKeyword),
-    Keyword(string: "Cashew", type: .previewKeyword),
-    Keyword(string: "Walnut", type: .previewKeyword),
-    Keyword(string: "Hazelnut", type: .previewKeyword),
-    Keyword(string: "Pistachio", type: .previewKeyword),
-    Keyword(string: "Sunflower Seed", type: .previewKeyword),
-    Keyword(string: "Flaxseed", type: .previewKeyword),
-    Keyword(string: "Chia Seed", type: .previewKeyword),
-    Keyword(string: "Quinoa", type: .previewKeyword),
-    Keyword(string: "Rice", type: .previewKeyword),
-]
-
 class SearchResultViewController: BaseViewController {
     
     // MARK: - Property
@@ -75,7 +42,7 @@ class SearchResultViewController: BaseViewController {
         }
     }
     
-    // MARK: - configure
+    // MARK: - Configure
     
     override func configure() {
         tableView.delegate = self
@@ -84,7 +51,6 @@ class SearchResultViewController: BaseViewController {
         
         tableView.showsVerticalScrollIndicator = false
     }
-    
     
     @objc func popToViewController() {
         navigationController?.popViewController(animated: false)

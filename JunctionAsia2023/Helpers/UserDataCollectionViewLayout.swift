@@ -11,7 +11,7 @@ class UserDataCollectionViewLayout: UICollectionViewFlowLayout {
     
     // MARK: - Property
     
-    let cellSpacing = 8.0
+    private let cellSpacing = 8.0
 
     // MARK: - Method
     

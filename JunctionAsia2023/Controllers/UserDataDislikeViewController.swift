@@ -10,7 +10,7 @@ import SnapKit
 
 final class UserDataDislikeViewController: BaseViewController {
     
-    // MARK: - Property
+    // MARK: - Properties
     
     var userName: String?
     var allergyDatum = [Int: String]()
@@ -20,7 +20,7 @@ final class UserDataDislikeViewController: BaseViewController {
         }
     }
     
-    // MARK: - View
+    // MARK: - Views
     
     private let userDataDislikeView = UserDataDislikeView(frame: UIScreen.main.bounds)
     

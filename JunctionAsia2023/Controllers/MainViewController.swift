@@ -57,12 +57,10 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
         if collectionView == mainView.AllergiesCollectionView {
             cell.cellLabel.text = allergyDatum[indexPath.row]
-            let width = cell.cellLabel.intrinsicContentSize.width + 40
-            return CGSize(width: width, height: 40)
         } else {
-            cell.cellLabel.text = disLikeDatum[indexPath.row].string
-            let width = cell.cellLabel.intrinsicContentSize.width + 40
-            return CGSize(width: width, height: 40)
+            cell.cellLabel.text = disLikeDatum[indexPath.row].description
         }
+        let width = cell.cellLabel.intrinsicContentSize.width + 40
+        return CGSize(width: width, height: 40)
     }
 }

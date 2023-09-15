@@ -87,10 +87,6 @@ final class DislikeResultCell: UICollectionViewCell {
         disLikeLabel.text = disLikeText
     }
     
-    func configureLabel(_ type: KeywordType) {
-        containerView.layer.maskedCorners = type.maskedCorners
-    }
-    
     // MARK: - Button
     
     @objc func didTapXButton() {

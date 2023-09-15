@@ -96,7 +96,7 @@ final class UserDataInfoView: UIView {
         return $0
     }(UIStackView())
     
-    private let maleButton: UIButton = {
+    private lazy var maleButton: UIButton = {
         $0.setTitle("Male", for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         $0.setTitleColor(.unselectedButtonTitleColor, for: .normal)
@@ -107,7 +107,7 @@ final class UserDataInfoView: UIView {
         return $0
     }(UIButton())
     
-    private let femaleButton: UIButton = {
+    private lazy var femaleButton: UIButton = {
         $0.setTitle("Female", for: .normal)
         $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         $0.setTitleColor(.unselectedButtonTitleColor, for: .normal)
@@ -118,7 +118,7 @@ final class UserDataInfoView: UIView {
         return $0
     }(UIButton())
     
-    private let nextBtn: UIButton = {
+    private lazy var nextBtn: UIButton = {
         $0.setTitle("Next", for: .normal)
         $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         $0.setTitleColor(.selectedButtonTitleColor, for: .normal)

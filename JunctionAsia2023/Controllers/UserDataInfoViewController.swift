@@ -10,7 +10,7 @@ import SnapKit
 
 class UserDataInfoViewController: BaseViewController {
     
-    // MARK: - View
+    // MARK: - Views
     
     private let userDataInfoView = UserDataInfoView(frame: UIScreen.main.bounds)
 
@@ -33,8 +33,8 @@ class UserDataInfoViewController: BaseViewController {
 
 extension UserDataInfoViewController: UserDataInfoViewDelegate {
     func nextBtnClick(_ userDataInfoView: UserDataInfoView) {
-        let userDataAllegyViewController = UserDataAllegyViewController()
-        userDataAllegyViewController.userName = self.userDataInfoView.nameTextField.text
-        navigationController?.pushViewController(userDataAllegyViewController, animated: true)
+        let userDataAllergyViewController = UserDataAllergyViewController()
+        userDataAllergyViewController.userName = self.userDataInfoView.nameTextField.text
+        navigationController?.pushViewController(userDataAllergyViewController, animated: true)
     }
 }

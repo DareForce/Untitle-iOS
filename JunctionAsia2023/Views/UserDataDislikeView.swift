@@ -77,9 +77,9 @@ final class UserDataDislikeView: UIView {
         return $0
     }(UILabel())
     
-    let dislikeCollectionView = DynamicCollectionView()
+    private let dislikeCollectionView = DynamicCollectionView()
     
-    private let skipAndSuccessButton: UIButton = {
+    private lazy var skipAndSuccessButton: UIButton = {
         $0.setTitle("Next", for: .normal)
         $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         $0.setTitleColor(.mainBlueColor, for: .normal)
@@ -193,12 +193,10 @@ extension UserDataDislikeView: UICollectionViewDelegateFlowLayout, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DislikeResultCell.identifier, for: indexPath) as! DislikeResultCell
         let labelText = dislikeType[indexPath.row].string
-        let labelType = dislikeType[indexPath.row].type
 
         cell.delegate = self
         
         cell.disLikeLabel.text = labelText
-        cell.configureLabel(labelType)
         
         return cell
     }
