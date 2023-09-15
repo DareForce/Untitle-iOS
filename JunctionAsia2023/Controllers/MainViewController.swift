@@ -11,25 +11,21 @@ class MainViewController: BaseViewController {
     var allergyDatum =  [String]()
     var disLikeDatum = [Keyword]()
     var userName = "홍길동"
-    private let mainView: MainView = MainView(frame: .zero)
+    private let mainView: MainView = MainView(frame: UIScreen.main.bounds)
     
-    override func layout(){
-        mainView.snp.makeConstraints{
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(0)
-            $0.bottom.leading.trailing.equalToSuperview()
-        }
+    override func loadView() {
+        view = mainView
     }
     
     override func configure() {
-        self.view.addSubview(mainView)
         self.mainView.AdditionalCollectionView.delegate = self
         self.mainView.AllergiesCollectionView.delegate = self
         self.mainView.AdditionalCollectionView.dataSource = self
         self.mainView.AllergiesCollectionView.dataSource = self
         self.mainView.purpleNameLabel.text = userName
+        
         navigationController?.navigationBar.isHidden = true
     }
-    
 }
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
