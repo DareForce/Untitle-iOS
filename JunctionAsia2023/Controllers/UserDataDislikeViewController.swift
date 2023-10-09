@@ -8,14 +8,19 @@
 import UIKit
 import SnapKit
 
-
-class UserDataDislikeViewController: BaseViewController {
+final class UserDataDislikeViewController: BaseViewController, DisLikeResultCellDelegate {
+    func didTapXButton(_ sender: UILabel) {
+        if let index = UserDataDislikeViewController.disLikeType.firstIndex(where: {$0.string == sender.text} ) {
+            UserDataDislikeViewController.disLikeType.remove(at: index)
+            disLikeCollectionView.reloadData()
+        }
+    }
+    
     
     var userName: String?
     var allergyDatum: [String]?
     static var disLikeType = [Keyword]()
-    var disLikeDatum = [String]()
-    var count: Int?  {
+    private var count: Int?  {
         didSet {
             if count == 0 {
                 skipAndSuccessButton.setTitleColor(UIColor(hexString: "#3E24FF"), for: .normal)
@@ -27,14 +32,14 @@ class UserDataDislikeViewController: BaseViewController {
         }
     }
     
-    let titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         $0.text = "Additional Info"
         $0.font = UIFont.systemFont(ofSize: 34, weight: .bold)
         $0.textAlignment = .left
         return $0
     }(UILabel())
     
-    let descriptionLabel: UILabel = {
+    private let descriptionLabel: UILabel = {
         $0.text = "Any more ingredients you don't want?"
         $0.textColor = .secondaryLabel
         $0.font = UIFont.systemFont(ofSize: 17, weight: .regular)
@@ -42,7 +47,7 @@ class UserDataDislikeViewController: BaseViewController {
         return $0
     }(UILabel())
     
-    let searchButton: UIButton = {
+    private let searchButton: UIButton = {
         $0.configuration?.title = "Search"
         $0.configuration?.image = UIImage(systemName: "magnifyingglass")
         $0.configuration?.imagePlacement = .leading
@@ -52,9 +57,9 @@ class UserDataDislikeViewController: BaseViewController {
         return $0
     }(UIButton(configuration: .filled()))
 
-    var disLikeCollectionView: UICollectionView!
+    private var disLikeCollectionView: UICollectionView!
     
-    let skipAndSuccessButton: UIButton = {
+    private let skipAndSuccessButton: UIButton = {
         $0.setTitle("Next", for: .normal)
         $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         $0.setTitleColor(UIColor(hexString: "#3E24FF"), for: .normal)
@@ -110,15 +115,12 @@ class UserDataDislikeViewController: BaseViewController {
             $0.bottom.equalTo(skipAndSuccessButton.snp.top)
         }
     }
- 
-    func setupCollectionView() {
-        disLikeCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UserDataCollectionViewLayout.init())
-    }
     
     @objc func moveToSearchResultViewController() {
         let searchResultViewController = SearchResultViewController()
         navigationController?.pushViewController(searchResultViewController, animated: false)
     }
+    
     @objc func moveToMainViewController() {
         let tabBarController = TabBarController()
         tabBarController.selectedIndex = 1
@@ -130,8 +132,15 @@ class UserDataDislikeViewController: BaseViewController {
     }
     
     override func configure() {
-        navigationController?.navigationBar.topItem?.title = ""
+        super.configure()
         
+        setupCollectionView()
+        navigationController?.navigationBar.topItem?.title = ""
+    }
+    
+    
+    private func setupCollectionView() {
+        disLikeCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UserDataCollectionViewLayout.init())
         disLikeCollectionView.delegate = self
         disLikeCollectionView.dataSource = self
         disLikeCollectionView.register(DisLikeResultCell.self, forCellWithReuseIdentifier: DisLikeResultCell.identifier)
@@ -152,6 +161,7 @@ extension UserDataDislikeViewController: UICollectionViewDelegateFlowLayout, UIC
 
         cell.disLikeLabel.text = labelText
         cell.configureLabel(labelType)
+        cell.delegate = self
         return cell
     }
     

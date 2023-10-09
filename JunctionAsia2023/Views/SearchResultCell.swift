@@ -12,13 +12,6 @@ class SearchResultCell: UITableViewCell {
     // MARK: - Property
     
     static let identifier = "searchResultCell"
-    override var isSelected: Bool {
-        didSet {
-            if isSelected {
-                print("클릭")
-            }
-        }
-    }
     
     // MARK: - View
     
