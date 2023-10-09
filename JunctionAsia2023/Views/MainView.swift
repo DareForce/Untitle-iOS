@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainView: UIView {
+final class MainView: UIView {
     var purple = false
     
     let AdditionalCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
@@ -21,7 +21,7 @@ class MainView: UIView {
     }
     private let additionalgisLabel = UILabel().then{
         $0.text = "Additional"
-        $0.textColor = UIColor(hexString: "#FFFFFF")
+        $0.textColor = .white
         $0.font = UIFont.systemFont(ofSize: 17)
     }
     let AllergiesCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
@@ -35,7 +35,7 @@ class MainView: UIView {
     }
     private let allergisLabel = UILabel().then{
         $0.text = "Allergies"
-        $0.textColor = UIColor(hexString: "#FFFFFF")
+        $0.textColor = .white
         $0.font = UIFont.systemFont(ofSize: 17)
     }
     private let charImg = UIImageView().then{
@@ -70,7 +70,7 @@ class MainView: UIView {
         $0.tintColor = .black
     }
     private let greenView = UIView().then{
-        $0.backgroundColor = UIColor(hexString: "#CEF700")
+        $0.backgroundColor = .characterColor
         $0.layer.cornerRadius = 40
         $0.layer.masksToBounds = false
         $0.layer.shadowColor = UIColor.systemGray5.cgColor
@@ -84,11 +84,11 @@ class MainView: UIView {
     }
     private let subtitleLabel = UILabel().then{
         $0.text = "This is your Food ID Card"
-        $0.textColor =  UIColor(hexString: "#3C3C43", alpha: 0.6)
+        $0.textColor = .unselectedButtonTitleColor
         $0.font = UIFont.systemFont(ofSize: 17)
     }
     private let purpleView = UIView().then{
-        $0.backgroundColor = UIColor(hexString: "#3E24FF")
+        $0.backgroundColor = .mainBlueColor
         $0.layer.cornerRadius = 40
         $0.layer.masksToBounds = false
         $0.layer.shadowColor = UIColor.systemGray5.cgColor
@@ -98,12 +98,12 @@ class MainView: UIView {
     }
     let purpleNameLabel = UILabel().then{
         $0.text = "Name"
-        $0.textColor = UIColor(hexString: "#FFFFFF")
+        $0.textColor = .white
         $0.font = UIFont.boldSystemFont(ofSize: 22)
     }
     private let purpleTitleLabel = UILabel().then{
         $0.text = "Food ID Card"
-        $0.textColor = UIColor(hexString: "#FFFFFF")
+        $0.textColor = .white
         $0.font = UIFont.boldSystemFont(ofSize: 28)
     }
     private func addsubview(){

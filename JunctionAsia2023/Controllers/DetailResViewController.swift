@@ -6,14 +6,15 @@
 //
 
 import UIKit
+import Then
 
 class DetailResViewController: BaseViewController {
-    public var id:Int?
+    var id:Int?
     private var apidata:[MenuData] = []
     private let api = DetailService()
     var ressubLabel = UILabel().then{
         $0.text = "School|Food"
-        $0.textColor =  UIColor(hexString: "#FFFFFF", alpha: 0.6)
+        $0.textColor = .selectedButtonTitleColor
         $0.font = UIFont.boldSystemFont(ofSize: 20)
     }
     var resNameLabel = UILabel().then{
@@ -86,29 +87,29 @@ extension DetailResViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
         
-        cell.resNameLabel.text = apidata[indexPath.row].name
-        cell.resNameLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        cell.topLabel.text = apidata[indexPath.row].name
+        cell.topLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         
         if apidata[indexPath.row].ingredients.isEmpty {
-            cell.titleLabel.text = ""
+            cell.midLabel.text = ""
         } else {
             let ingredients = apidata[indexPath.row].ingredients
             
-            cell.titleLabel.text = "⚠️ "
+            cell.midLabel.text = "⚠️ "
             ingredients.forEach {
-                cell.titleLabel.text! += "\($0) "
+                cell.midLabel.text! += "\($0) "
             }
         }
         
         if let imageURL = URL(string: apidata[indexPath.row].thumbnail ){
-            cell.img.kf.setImage(with: imageURL)
+            cell.menuImageView.kf.setImage(with: imageURL)
         }
         
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
-        cell.subtitleLabel.textColor =  UIColor(hexString: "#3E24FF")
-        cell.subtitleLabel.font = UIFont.boldSystemFont(ofSize: 17)
-        cell.subtitleLabel.text = "₩" + numberFormatter.string(from: NSNumber(value: apidata[indexPath.row].price))!
+        cell.bottomLabel.textColor = .mainBlueColor
+        cell.bottomLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        cell.bottomLabel.text = "₩" + numberFormatter.string(from: NSNumber(value: apidata[indexPath.row].price))!
 //        cell.selectionStyle = .none
         return cell
     }

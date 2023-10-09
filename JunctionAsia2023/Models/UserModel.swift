@@ -6,7 +6,8 @@
 //
 
 import Foundation
-struct UserInfo{
+
+struct UserInfo {
     var sex: String
     var name: String
     var age: Int

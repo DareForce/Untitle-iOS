@@ -43,10 +43,7 @@ class TabBarController: UITabBarController,UITabBarControllerDelegate {
         self.tabBar.layer.borderColor = UIColor.systemGray5.cgColor
         self.tabBar.clipsToBounds = true
         self.tabBar.unselectedItemTintColor = .systemGray
-        self.tabBar.tintColor = UIColor(hexString: "#007AFF")
 
-
-        
         setViewControllers([vc1,vc2,vc3], animated: false)
     }
 }
